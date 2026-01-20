@@ -66,9 +66,9 @@ export default function Hero() {
       <div className="absolute bottom-32 right-16 w-24 h-24 border border-primary-400/20 rounded-full animate-float delay-300 opacity-50 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-[-4rem]">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-[-4rem] md:mt-[-8rem]">
         {/* Denomination */}
-        <p className="animate-fade-in-up delay-100 text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+        <p className="animate-fade-in-up delay-100 text-primary-300 text-sm tracking-[0.3em] uppercase mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
           대한예수교장로회 예원총회
         </p>
 
@@ -93,7 +93,7 @@ export default function Hero() {
                 </div>
 
                 {/* Subtitle */}
-                <p className="text-lg md:text-xl text-gray-100 mb-10 leading-relaxed max-w-2xl mx-auto whitespace-pre-line drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                <p className="text-lg md:text-xl text-gray-100 leading-relaxed max-w-2xl mx-auto whitespace-pre-line drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   {image.subtitle}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export default function Hero() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4 justify-center mt-4">
+        <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4 justify-center mt-16">
           <Link
             href="/worship"
             className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,168,85,0.4)] hover:-translate-y-1"
