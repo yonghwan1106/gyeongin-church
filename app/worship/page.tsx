@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "예배안내 | 경인교회",
@@ -42,16 +43,25 @@ export default function WorshipPage() {
   return (
     <div className="pt-20">
       {/* Page Header */}
-      <section className="relative py-24 bg-gradient-to-br from-sacred-800 via-sacred-900 to-sacred-800 text-white overflow-hidden">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-primary-500/10 rounded-full" />
+      {/* Page Header */}
+      <section className="relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/header_worship_stained_glass_1768878774484.png"
+            alt="예배안내 배경"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-sacred-900/70" />
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-          <span className="text-primary-400 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10 text-white">
+          <span className="text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
             Worship
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100 text-white drop-shadow-lg">
             예배안내
           </h1>
           <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in delay-200">
@@ -59,7 +69,7 @@ export default function WorshipPage() {
             <span className="text-primary-400">✦</span>
             <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
           </div>
-          <p className="text-primary-200 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300">
+          <p className="text-primary-100 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300 drop-shadow-md">
             경인교회 예배 시간과 순서를 안내합니다
           </p>
         </div>

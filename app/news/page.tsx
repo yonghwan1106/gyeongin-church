@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "교회소식 | 경인교회",
@@ -47,16 +48,25 @@ export default function NewsPage() {
   return (
     <div className="pt-20">
       {/* Page Header */}
-      <section className="relative py-24 bg-gradient-to-br from-sacred-800 via-sacred-900 to-sacred-800 text-white overflow-hidden">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-primary-500/10 rounded-full" />
+      {/* Page Header */}
+      <section className="relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/header_news_bulletin_1768878759923.png"
+            alt="교회소식 배경"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-sacred-900/80" />
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-          <span className="text-primary-400 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10 text-white">
+          <span className="text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
             News
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100 text-white drop-shadow-lg">
             교회소식
           </h1>
           <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in delay-200">
@@ -64,7 +74,7 @@ export default function NewsPage() {
             <span className="text-primary-400">✦</span>
             <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
           </div>
-          <p className="text-primary-200 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300">
+          <p className="text-primary-100 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300 drop-shadow-md">
             경인교회의 소식을 전합니다
           </p>
         </div>
@@ -173,15 +183,28 @@ export default function NewsPage() {
             </div>
           </div>
 
-          <div className="sacred-card rounded-3xl p-10 md:p-14 text-center">
-            <div className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl flex items-center justify-center">
-              <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <p className="text-gray-600 text-lg">
-              교회 사진 갤러리는 준비 중입니다.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { src: "/images/gallery_sample_01_korean_1768879073401.png", alt: "찬양대" },
+              { src: "/images/gallery_sample_02_korean_1768879090680.png", alt: "봉사활동" },
+              { src: "/images/gallery_sample_03_korean_1768879106608.png", alt: "청년부" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <p className="text-white font-medium">{item.alt}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

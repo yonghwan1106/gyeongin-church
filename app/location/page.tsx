@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "오시는길 | 경인교회",
@@ -56,16 +57,24 @@ export default function LocationPage() {
   return (
     <div className="pt-20">
       {/* Page Header */}
-      <section className="relative py-24 bg-gradient-to-br from-sacred-800 via-sacred-900 to-sacred-800 text-white overflow-hidden">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-primary-500/10 rounded-full" />
+      <section className="relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero_exterior_1768878683608.png"
+            alt="오시는길 배경"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-sacred-900/70" />
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-          <span className="text-primary-400 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10 text-white">
+          <span className="text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
             Location
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100 text-white drop-shadow-lg">
             오시는길
           </h1>
           <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in delay-200">
@@ -73,7 +82,7 @@ export default function LocationPage() {
             <span className="text-primary-400">✦</span>
             <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
           </div>
-          <p className="text-primary-200 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300">
+          <p className="text-primary-100 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300 drop-shadow-md">
             경인교회 위치를 안내합니다
           </p>
         </div>
@@ -99,16 +108,23 @@ export default function LocationPage() {
           </div>
 
           {/* Map Placeholder */}
-          <div className="sacred-card rounded-3xl h-80 flex items-center justify-center mb-10 overflow-hidden">
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center">
-                <svg className="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
+          {/* Map Placeholder */}
+          <div className="sacred-card rounded-3xl h-80 flex items-center justify-center mb-10 overflow-hidden relative">
+            <Image
+              src="/images/content_map_illustration_1768878816774.png"
+              alt="Map Illustration"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-white/30 backdrop-blur-[2px]">
+              <div className="bg-white/90 px-8 py-4 rounded-2xl shadow-lg text-center">
+                <p className="text-gray-800 font-semibold mb-1">
+                  지도는 주소 확정 후 표시됩니다.
+                </p>
+                <p className="text-primary-600 text-sm">
+                  (현재 일러스트 이미지)
+                </p>
               </div>
-              <p className="text-gray-600 text-lg">
-                지도는 주소 확정 후 표시됩니다.
-              </p>
             </div>
           </div>
 

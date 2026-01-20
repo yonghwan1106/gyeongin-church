@@ -10,17 +10,24 @@ export default function AboutPage() {
   return (
     <div className="pt-20">
       {/* Page Header */}
-      <section className="relative py-24 bg-gradient-to-br from-sacred-800 via-sacred-900 to-sacred-800 text-white overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-primary-500/10 rounded-full" />
+      <section className="relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/header_about_bible_1768878741549.png"
+            alt="교회소개 배경"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-sacred-900/70" />
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-          <span className="text-primary-400 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10 text-white">
+          <span className="text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
             About Us
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100 text-white drop-shadow-lg">
             교회소개
           </h1>
           <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in delay-200">
@@ -28,7 +35,7 @@ export default function AboutPage() {
             <span className="text-primary-400">✦</span>
             <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
           </div>
-          <p className="text-primary-200 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300">
+          <p className="text-primary-100 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300 drop-shadow-md">
             대한예수교장로회 예원총회 소속<br />
             경인교회의 비전과 역사를 소개합니다
           </p>
@@ -37,6 +44,14 @@ export default function AboutPage() {
 
       {/* Vision Section */}
       <section className="py-24 bg-gradient-to-b from-warm-100 to-warm-200 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <Image
+            src="/images/content_vision_1768878800425.png"
+            alt="Vision Background"
+            fill
+            className="object-cover"
+          />
+        </div>
         <div className="absolute top-20 right-10 w-32 h-32 border border-primary-300/30 rounded-full" />
 
         <div className="max-w-5xl mx-auto px-4">
