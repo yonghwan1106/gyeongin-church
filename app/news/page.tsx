@@ -12,6 +12,7 @@ const announcements = [
     date: "2026-01-20",
     category: "공지",
     content: "경인교회 홈페이지가 새롭게 오픈되었습니다. 많은 관심 부탁드립니다.",
+    isNew: true,
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const announcements = [
     date: "2026-01-19",
     category: "예배",
     content: "매주 주일 오전 11시에 주일예배가 있습니다. 모든 성도님들의 참석을 바랍니다.",
+    isNew: false,
   },
   {
     id: 3,
@@ -26,46 +28,93 @@ const announcements = [
     date: "2026-01-18",
     category: "예배",
     content: "매주 수요일 저녁 7시에 수요예배가 있습니다.",
+    isNew: false,
   },
 ];
 
+const getCategoryStyle = (category: string) => {
+  switch (category) {
+    case "공지":
+      return "bg-gradient-to-r from-primary-500 to-primary-600 text-white";
+    case "예배":
+      return "bg-gradient-to-r from-blue-500 to-blue-600 text-white";
+    default:
+      return "bg-gradient-to-r from-gray-500 to-gray-600 text-white";
+  }
+};
+
 export default function NewsPage() {
   return (
-    <div>
+    <div className="pt-20">
       {/* Page Header */}
-      <section className="bg-primary-700 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">교회소식</h1>
-          <p className="text-primary-200 text-lg">
+      <section className="relative py-24 bg-gradient-to-br from-sacred-800 via-sacred-900 to-sacred-800 text-white overflow-hidden">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-primary-500/10 rounded-full" />
+
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
+          <span className="text-primary-400 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
+            News
+          </span>
+          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100">
+            교회소식
+          </h1>
+          <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in delay-200">
+            <span className="w-12 h-px bg-gradient-to-r from-transparent to-primary-400" />
+            <span className="text-primary-400">✦</span>
+            <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
+          </div>
+          <p className="text-primary-200 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300">
             경인교회의 소식을 전합니다
           </p>
         </div>
       </section>
 
       {/* Announcements */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">공지사항</h2>
-          <div className="space-y-4">
-            {announcements.map((item) => (
+      <section className="py-24 bg-gradient-to-b from-warm-100 to-warm-200 relative overflow-hidden">
+        <div className="absolute top-20 right-10 w-32 h-32 border border-primary-300/30 rounded-full" />
+
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
+              Announcements
+            </span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-6">
+              공지사항
+            </h2>
+            <div className="flex items-center justify-center gap-4">
+              <span className="w-16 h-px bg-gradient-to-r from-transparent to-primary-400" />
+              <span className="text-primary-500">✦</span>
+              <span className="w-16 h-px bg-gradient-to-l from-transparent to-primary-400" />
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {announcements.map((item, index) => (
               <article
                 key={item.id}
-                className="bg-warm-50 rounded-xl p-6 hover:shadow-md transition-shadow"
+                className="sacred-card rounded-2xl p-8 hover-lift animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="bg-primary-600 text-white text-xs px-2 py-1 rounded">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className={`text-xs px-3 py-1.5 rounded-full font-medium ${getCategoryStyle(item.category)}`}>
                       {item.category}
                     </span>
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    {item.isNew && (
+                      <span className="text-xs px-3 py-1.5 rounded-full font-medium bg-gradient-to-r from-red-500 to-rose-500 text-white animate-pulse">
+                        NEW
+                      </span>
+                    )}
+                    <h3 className="font-serif text-xl font-bold text-sacred-900">
                       {item.title}
                     </h3>
                   </div>
-                  <time className="text-sm text-gray-500 whitespace-nowrap">
+                  <time className="text-sm text-primary-600 bg-primary-50 px-4 py-1.5 rounded-full whitespace-nowrap">
                     {item.date}
                   </time>
                 </div>
-                <p className="text-gray-600">{item.content}</p>
+                <p className="text-gray-600 leading-relaxed pl-0 md:pl-2">{item.content}</p>
               </article>
             ))}
           </div>
@@ -73,15 +122,34 @@ export default function NewsPage() {
       </section>
 
       {/* Weekly Bulletin */}
-      <section className="py-16 bg-warm-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">주보</h2>
-          <div className="bg-white rounded-xl p-8 text-center">
-            <div className="text-6xl mb-4">📄</div>
-            <p className="text-gray-600 mb-4">
+      <section className="py-24 bg-gradient-to-b from-warm-200 to-warm-100 relative overflow-hidden">
+        <div className="absolute bottom-20 left-10 w-48 h-48 bg-primary-200/30 rounded-full blur-3xl" />
+
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
+              Bulletin
+            </span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-6">
+              주보
+            </h2>
+            <div className="flex items-center justify-center gap-4">
+              <span className="w-16 h-px bg-gradient-to-r from-transparent to-primary-400" />
+              <span className="text-primary-500">✦</span>
+              <span className="w-16 h-px bg-gradient-to-l from-transparent to-primary-400" />
+            </div>
+          </div>
+
+          <div className="sacred-card rounded-3xl p-10 md:p-14 text-center">
+            <div className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl flex items-center justify-center">
+              <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <p className="text-gray-600 text-lg mb-4 leading-relaxed">
               주보는 매주 주일예배 시간에 배포됩니다.
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-primary-500 text-sm">
               온라인 주보 서비스는 준비 중입니다.
             </p>
           </div>
@@ -89,12 +157,29 @@ export default function NewsPage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">갤러리</h2>
-          <div className="bg-warm-50 rounded-xl p-8 text-center">
-            <div className="text-6xl mb-4">📷</div>
-            <p className="text-gray-600">
+      <section className="py-24 bg-gradient-to-b from-warm-100 to-warm-200">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
+              Gallery
+            </span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-6">
+              갤러리
+            </h2>
+            <div className="flex items-center justify-center gap-4">
+              <span className="w-16 h-px bg-gradient-to-r from-transparent to-primary-400" />
+              <span className="text-primary-500">✦</span>
+              <span className="w-16 h-px bg-gradient-to-l from-transparent to-primary-400" />
+            </div>
+          </div>
+
+          <div className="sacred-card rounded-3xl p-10 md:p-14 text-center">
+            <div className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl flex items-center justify-center">
+              <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <p className="text-gray-600 text-lg">
               교회 사진 갤러리는 준비 중입니다.
             </p>
           </div>

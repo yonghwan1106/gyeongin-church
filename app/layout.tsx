@@ -4,12 +4,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "경인교회",
-  description: "경인교회에 오신 것을 환영합니다. 김재완 전도사가 섬기는 따뜻한 교회입니다.",
-  keywords: ["경인교회", "김재완 전도사", "교회", "예배"],
+  title: "경인교회 | 대한예수교장로회 예원총회",
+  description: "대한예수교장로회 예원총회 경인교회에 오신 것을 환영합니다. 김재완 전도사가 섬기는 따뜻한 교회입니다.",
+  keywords: ["경인교회", "김재완 전도사", "대한예수교장로회", "예원총회", "교회", "예배"],
   openGraph: {
     title: "경인교회",
-    description: "경인교회에 오신 것을 환영합니다.",
+    description: "대한예수교장로회 예원총회 경인교회에 오신 것을 환영합니다.",
     type: "website",
   },
 };
@@ -22,6 +22,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <link
           rel="stylesheet"
           as="style"
