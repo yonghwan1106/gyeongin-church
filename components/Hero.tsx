@@ -73,11 +73,11 @@ export default function Hero() {
         </p>
 
         {/* Main Title */}
-        <div className="h-[200px] md:h-[240px] flex flex-col justify-center transform transition-all duration-500">
+        <div className="h-[180px] md:h-[240px] flex flex-col justify-center transform transition-all duration-500">
           {heroImages.map((image, index) => (
             index === currentSlide && (
               <div key={index} className="animate-fade-in-up delay-200">
-                <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                <h1 className="font-serif text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
                   {image.title_1}
                   <br />
                   <span className="text-gradient-gold bg-gradient-to-r from-primary-300 via-primary-200 to-primary-300 bg-clip-text text-transparent">
