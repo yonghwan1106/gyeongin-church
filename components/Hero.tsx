@@ -66,9 +66,9 @@ export default function Hero() {
       <div className="absolute bottom-32 right-16 w-24 h-24 border border-primary-400/20 rounded-full animate-float delay-300 opacity-50 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-[-4rem] md:mt-[-8rem]">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-0 md:mt-[-8rem]">
         {/* Denomination */}
-        <p className="animate-fade-in-up delay-100 text-primary-300 text-sm tracking-[0.3em] uppercase mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+        <p className="animate-fade-in-up delay-100 text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 md:mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
           대한예수교장로회 예원총회
         </p>
 
