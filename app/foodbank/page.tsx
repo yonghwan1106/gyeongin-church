@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "푸드뱅크 | 경인교회",
@@ -11,12 +12,16 @@ export default function FoodbankPage() {
     <div className="pt-20">
       {/* Hero Section */}
       <section className="relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
-        {/* CSS Gradient Background */}
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-sacred-900 via-sacred-800 to-sacred-700" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-900/40 via-transparent to-primary-800/20" />
-          <div className="absolute top-20 left-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-primary-400/8 rounded-full blur-3xl" />
+          <Image
+            src="/images/hero_foodbank.jpg"
+            alt="푸드뱅크 배경"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-sacred-900/70" />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 text-center relative z-10 text-white">
