@@ -8,6 +8,7 @@ const navItems = [
   { href: "/about", label: "교회소개" },
   { href: "/worship", label: "예배안내" },
   { href: "/news", label: "교회소식" },
+  { href: "/foodbank", label: "푸드뱅크" },
   { href: "/location", label: "오시는길" },
 ];
 
