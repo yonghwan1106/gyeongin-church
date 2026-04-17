@@ -675,9 +675,9 @@ export default function FoodbankPage() {
                 오시는 길
               </h3>
               <div className="text-gray-600 text-sm space-y-2">
-                <p>경기도 OO시 OO구</p>
-                <p>OO로 123번길 45</p>
-                <p>경인교회 지하 1층</p>
+                <p>경기도 용인특례시 기흥구</p>
+                <p>동백죽전대로 341, 213호</p>
+                <p>(동백역 1번 출구 도보 5분)</p>
               </div>
             </div>
 
@@ -716,7 +716,7 @@ export default function FoodbankPage() {
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  <span>031-000-0000</span>
+                  <span>010-7708-7006</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <svg
@@ -732,7 +732,7 @@ export default function FoodbankPage() {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  <span>foodbank@gyeongin.church</span>
+                  <span>a365center@gmail.com</span>
                 </div>
               </div>
             </div>
