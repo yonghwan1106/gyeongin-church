@@ -4,12 +4,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "경인교회 | 대한예수교장로회 예원총회",
-  description: "대한예수교장로회 예원총회 경인교회에 오신 것을 환영합니다. 김재완 전도사가 섬기는 따뜻한 교회입니다.",
-  keywords: ["경인교회", "김재완 전도사", "대한예수교장로회", "예원총회", "교회", "예배"],
+  title: "경인교회 | 대한예수교장로회",
+  description: "대한예수교장로회 경인교회에 오신 것을 환영합니다. 김재완 전도사가 섬기는 따뜻한 교회입니다.",
+  keywords: ["경인교회", "김재완 전도사", "대한예수교장로회", "교회", "예배", "용인 교회", "기흥구 교회", "동백역 교회"],
   openGraph: {
     title: "경인교회",
-    description: "대한예수교장로회 예원총회 경인교회에 오신 것을 환영합니다.",
+    description: "대한예수교장로회 경인교회에 오신 것을 환영합니다.",
     type: "website",
   },
 };

@@ -41,7 +41,7 @@ export default function Header() {
                 경인교회
               </span>
               <span className="text-[10px] leading-tight hidden sm:block text-primary-600 transition-colors duration-300">
-                대한예수교장로회 예원총회
+                대한예수교장로회
               </span>
             </div>
           </Link>

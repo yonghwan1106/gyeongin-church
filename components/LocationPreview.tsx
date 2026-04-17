@@ -41,14 +41,14 @@ export default function LocationPreview() {
                   <span className="text-primary-500 mt-1">•</span>
                   <div>
                     <p className="font-medium text-sacred-900">주소</p>
-                    <p className="text-sm">추후 안내 예정</p>
+                    <p className="text-sm">경기도 용인특례시 기흥구 동백죽전대로 341, 213호</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary-500 mt-1">•</span>
                   <div>
                     <p className="font-medium text-sacred-900">전화</p>
-                    <p className="text-sm">추후 안내 예정</p>
+                    <p className="text-sm">010-7708-7006 / 010-9867-3121</p>
                   </div>
                 </li>
               </ul>
@@ -69,14 +69,14 @@ export default function LocationPreview() {
                   <span className="text-blue-500 mt-1">🚇</span>
                   <div>
                     <p className="font-medium text-sacred-900">지하철</p>
-                    <p className="text-sm">추후 안내 예정</p>
+                    <p className="text-sm">동백역 1번 출구 도보 5분</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">🚌</span>
                   <div>
                     <p className="font-medium text-sacred-900">버스</p>
-                    <p className="text-sm">추후 안내 예정</p>
+                    <p className="text-sm">동백죽전대로 정류장 하차 후 도보 이동</p>
                   </div>
                 </li>
               </ul>

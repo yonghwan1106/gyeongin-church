@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "교회소개 | 경인교회",
-  description: "대한예수교장로회 예원총회 경인교회의 비전과 역사, 담임 전도사를 소개합니다.",
+  description: "대한예수교장로회 경인교회의 비전과 역사, 담임 전도사를 소개합니다.",
 };
 
 export default function AboutPage() {
@@ -36,7 +36,7 @@ export default function AboutPage() {
             <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
           </div>
           <p className="text-primary-100 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300 drop-shadow-md">
-            대한예수교장로회 예원총회 소속<br />
+            대한예수교장로회 소속<br />
             경인교회의 비전과 역사를 소개합니다
           </p>
         </div>

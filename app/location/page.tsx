@@ -14,7 +14,7 @@ const transportInfo = [
       </svg>
     ),
     title: "지하철",
-    description: "추후 안내 예정",
+    description: "동백역(에버라인) 1번 출구 도보 5분",
     bgColor: "from-blue-100 to-blue-200",
     iconColor: "text-blue-600",
   },
@@ -25,7 +25,7 @@ const transportInfo = [
       </svg>
     ),
     title: "버스",
-    description: "추후 안내 예정",
+    description: "동백죽전대로 정류장 하차 후 도보 이동",
     bgColor: "from-green-100 to-green-200",
     iconColor: "text-green-600",
   },
@@ -36,7 +36,7 @@ const transportInfo = [
       </svg>
     ),
     title: "자가용",
-    description: "추후 안내 예정",
+    description: "용인세브란스병원 입구 메디컬빌딩",
     bgColor: "from-orange-100 to-orange-200",
     iconColor: "text-orange-600",
   },
@@ -47,7 +47,7 @@ const transportInfo = [
       </svg>
     ),
     title: "주차",
-    description: "추후 안내 예정",
+    description: "메디컬빌딩 주차장 이용 가능",
     bgColor: "from-purple-100 to-purple-200",
     iconColor: "text-purple-600",
   },
@@ -109,23 +109,17 @@ export default function LocationPage() {
 
           {/* Map Placeholder */}
           {/* Map Placeholder */}
-          <div className="sacred-card rounded-3xl h-80 flex items-center justify-center mb-10 overflow-hidden relative">
-            <Image
-              src="/images/content_map_illustration_1768878816774.png"
-              alt="Map Illustration"
-              fill
-              className="object-cover"
+          <div className="sacred-card rounded-3xl h-96 mb-10 overflow-hidden relative">
+            <iframe
+              src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%ED%8A%B9%EB%A1%80%EC%8B%9C%20%EA%B8%B0%ED%9D%A5%EA%B5%AC%20%EB%8F%99%EB%B0%B1%EC%A3%BD%EC%A0%84%EB%8C%80%EB%A1%9C%20341&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="경인교회 위치"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-white/30 backdrop-blur-[2px]">
-              <div className="bg-white/90 px-8 py-4 rounded-2xl shadow-lg text-center">
-                <p className="text-gray-800 font-semibold mb-1">
-                  지도는 주소 확정 후 표시됩니다.
-                </p>
-                <p className="text-primary-600 text-sm">
-                  (현재 일러스트 이미지)
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Address Info */}
@@ -141,7 +135,9 @@ export default function LocationPage() {
                 <div>
                   <h3 className="font-serif text-xl font-semibold text-sacred-900 mb-3">주소</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    추후 안내 예정
+                    경기도 용인특례시 기흥구<br />
+                    동백죽전대로 341, 213호<br />
+                    <span className="text-sm text-gray-500">(동백역 1번 출구 도보 5분 / 용인세브란스병원 입구 메디컬빌딩)</span>
                   </p>
                 </div>
               </div>
@@ -154,8 +150,9 @@ export default function LocationPage() {
                 <div>
                   <h3 className="font-serif text-xl font-semibold text-sacred-900 mb-3">연락처</h3>
                   <ul className="text-gray-600 space-y-2">
-                    <li>전화: 추후 안내 예정</li>
-                    <li>이메일: 추후 안내 예정</li>
+                    <li>전화: 010-7708-7006 / 010-9867-3121</li>
+                    <li>이메일: a365center@gmail.com</li>
+                    <li>홈페이지: www.a365.or.kr</li>
                   </ul>
                 </div>
               </div>
@@ -223,7 +220,7 @@ export default function LocationPage() {
                 교회 방문에 대한 문의사항이 있으시면 언제든지 연락주세요.
               </p>
               <a
-                href="tel:000-0000-0000"
+                href="tel:010-7708-7006"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full font-medium transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,168,85,0.4)] hover-lift"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
