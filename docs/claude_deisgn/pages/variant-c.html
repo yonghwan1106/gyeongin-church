@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Variant C · Civic Modern</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/shell.css">
+<style>
+  body.page-body { background: var(--paper); }
+
+  /* Header: green accent */
+  .hdr--c { background: #fff; border-bottom: 1px solid var(--line); }
+  .hdr--c .hdr-mark { background: linear-gradient(135deg, var(--care-600), var(--care-700)); color: #fff; }
+  .hdr--c .strip { max-width: 1180px; margin: 0 auto; padding: 6px 32px; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.1em; color: var(--ink-600); background: var(--care-50); border-bottom: 1px solid var(--care-200); }
+  .hdr--c .strip strong { color: var(--care-700); font-weight: 700; }
+
+  /* HERO — split card-grid */
+  .hero-c { padding: 60px 32px 40px; background: var(--paper); }
+  .hero-c-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: stretch; }
+  .hero-main {
+    background: var(--sacred-900); color: #fff;
+    border-radius: var(--r-xl); padding: 56px 56px 40px;
+    position: relative; overflow: hidden;
+    min-height: 560px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .hero-main::before { content: ''; position: absolute; inset: 0; background: url('../assets/hero_education.png') center/cover; opacity: 0.22; mix-blend-mode: luminosity; }
+  .hero-main::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--sacred-900) 20%, transparent 80%); }
+  .hero-main > * { position: relative; z-index: 2; }
+
+  .tag-pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 10px; background: rgba(212,168,85,0.18); border: 1px solid rgba(212,168,85,0.35); border-radius: 999px; color: var(--primary-300); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+  .tag-pill .d { width: 6px; height: 6px; border-radius: 50%; background: var(--care-300); box-shadow: 0 0 0 3px rgba(127,201,155,0.25); }
+  .tag-pill strong { color: #fff; font-weight: 600; }
+
+  .hero-main h1 { font-family: var(--font-serif); font-size: clamp(40px, 5vw, 68px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; color: #fff; word-break: keep-all; margin: 24px 0 18px; max-width: 14ch; }
+  .hero-main h1 em { font-style: normal; color: var(--primary-300); }
+  .hero-main p.lede { color: rgba(255,255,255,0.85); font-size: 18px; line-height: 1.7; word-break: keep-all; max-width: 42ch; }
+  .hero-main .ctas { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Hero side stack */
+  .hero-side { display: grid; grid-template-rows: 1.4fr 1fr; gap: 16px; }
+  .hero-card {
+    border-radius: var(--r-xl);
+    padding: 28px;
+    position: relative; overflow: hidden;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 220px;
+  }
+  .hero-card-a { background: url('../assets/hero_foodbank.jpg') center/cover; }
+  .hero-card-a::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,22,18,0.1), rgba(26,22,18,0.8)); }
+  .hero-card-a > * { position: relative; z-index: 2; }
+  .hero-card-b { background: linear-gradient(145deg, var(--care-600), var(--care-700)); }
+  .hero-card .kicker { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.7); }
+  .hero-card h3 { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin: 8px 0 0; word-break: keep-all; line-height: 1.3; }
+  .hero-card .meta { display: flex; gap: 12px; align-items: center; font-size: 13px; color: rgba(255,255,255,0.8); margin-top: auto; }
+  .hero-card .arrow { margin-left: auto; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2); display: grid; place-items: center; backdrop-filter: blur(8px); }
+
+  /* Stats row — metric tiles with progress */
+  .stats-c { padding: 80px 32px; background: var(--paper-warm); }
+  .stats-c-inner { max-width: 1180px; margin: 0 auto; }
+  .stats-c-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 44px; }
+  .stats-c-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stats-tile {
+    background: #fff; border-radius: var(--r-lg); padding: 28px;
+    border: 1px solid var(--line-soft);
+    position: relative; overflow: hidden;
+  }
+  .stats-tile .n { font-family: var(--font-serif); font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: var(--sacred-900); line-height: 0.95; }
+  .stats-tile .n .u { font-size: 22px; color: var(--primary-600); margin-left: 4px; vertical-align: 0.45em; font-weight: 600; }
+  .stats-tile.care .n { color: var(--care-600); }
+  .stats-tile .l { font-size: 14px; color: var(--ink-700); margin-top: 14px; line-height: 1.65; word-break: keep-all; }
+  .stats-tile .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--line); }
+  .stats-tile .bar .fill { height: 100%; background: var(--primary-500); width: 70%; }
+  .stats-tile.care .bar .fill { background: var(--care-500); }
+
+  /* Split section: Education + Outreach */
+  .split-c { padding: 100px 32px; background: var(--paper); }
+  .split-c-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .panel { background: #fff; border: 1px solid var(--line); border-radius: var(--r-xl); padding: 40px; }
+  .panel h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; margin: 0 0 8px; }
+  .panel p { font-size: 16px; line-height: 1.75; color: var(--ink-700); word-break: keep-all; margin: 6px 0 24px; }
+  .panel.care { background: linear-gradient(165deg, var(--care-700), var(--care-800)); color: #fff; border-color: transparent; }
+  .panel.care h2, .panel.care p { color: #fff; }
+  .panel.care p { color: rgba(255,255,255,0.82); }
+
+  .step-list { display: flex; flex-direction: column; gap: 2px; }
+  .step-row {
+    display: grid; grid-template-columns: 48px 1fr auto; gap: 16px;
+    padding: 16px 18px; border-radius: var(--r-md);
+    transition: background 0.2s;
+    align-items: center;
+  }
+  .step-row:hover { background: var(--paper-warm); }
+  .step-row .n { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--primary-600); letter-spacing: -0.03em; line-height: 1; }
+  .step-row .t { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--sacred-900); margin-bottom: 3px; }
+  .step-row .s { font-size: 13px; color: var(--ink-600); word-break: keep-all; }
+  .step-row .meta { font-size: 12px; color: var(--primary-700); font-weight: 600; letter-spacing: 0.05em; white-space: nowrap; }
+  .step-row.hl { background: linear-gradient(90deg, var(--care-50), transparent); }
+  .step-row.hl .n { color: var(--care-600); }
+  .step-row.hl .meta { color: var(--care-700); }
+
+  .min-list { display: flex; flex-direction: column; gap: 16px; }
+  .min-row {
+    display: grid; grid-template-columns: 52px 1fr auto;
+    gap: 16px; align-items: center;
+    padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .min-row:last-child { border-bottom: 0; }
+  .min-ico { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,0.12); display: grid; place-items: center; color: #fff; }
+  .min-ico svg { width: 22px; height: 22px; }
+  .min-row h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 2px; letter-spacing: -0.01em; }
+  .min-row p { font-size: 14px; color: rgba(255,255,255,0.75); margin: 0; word-break: keep-all; line-height: 1.6; }
+  .min-row .go { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.14); display: grid; place-items: center; font-size: 14px; }
+
+  /* Pastor inline — small, trust-forward */
+  .pastor-c { padding: 100px 32px; background: var(--paper-warm); }
+  .pastor-c-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+  .pastor-c-photo {
+    aspect-ratio: 4/5;
+    background-image: url('../assets/pastor_kim.png');
+    background-size: cover; background-position: center top;
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .pastor-c h2 { font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; line-height: 1.2; margin: 8px 0 20px; word-break: keep-all; }
+  .pastor-c .quote-mark { font-family: var(--font-serif); color: var(--primary-400); font-size: 56px; line-height: 0.3; }
+  .pastor-c p { font-size: 17px; line-height: 1.85; color: var(--ink-700); word-break: keep-all; margin: 14px 0; }
+  .pastor-c p strong { color: var(--sacred-900); font-weight: 700; }
+  .pastor-c .sign { margin-top: 24px; display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .pastor-c .sign .n { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--sacred-900); letter-spacing: -0.02em; font-style: italic; }
+  .pastor-c .sign .r { font-size: 13px; color: var(--ink-600); padding-left: 12px; border-left: 1px solid var(--line); margin-left: 12px; }
+
+  /* Big green CTA */
+  .cta-c { padding: 90px 32px; background: linear-gradient(145deg, var(--care-600), var(--care-800)); color: #fff; position: relative; overflow: hidden; }
+  .cta-c::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,85,0.12), transparent 60%); }
+  .cta-c-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 2; }
+  .cta-c h2 { font-family: var(--font-serif); font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: #fff; margin: 12px 0 18px; word-break: keep-all; }
+  .cta-c p { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.88); word-break: keep-all; }
+
+  .cta-phone-box { background: rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-xl); padding: 32px; text-align: center; }
+  .cta-phone-box .l { font-size: 12px; letter-spacing: 0.2em; color: rgba(255,255,255,0.7); text-transform: uppercase; font-weight: 700; }
+  .cta-phone-box .num { font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin: 10px 0 8px; }
+  .cta-phone-box .s { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+  .cta-phone-box a { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px; background: #fff; color: var(--care-700); font-weight: 700; border-radius: var(--r-md); font-size: 16px; }
+  .cta-phone-box a:hover { background: var(--paper-warm); }
+
+  /* Location — inline */
+  .loc-c { padding: 100px 32px; background: var(--paper); }
+  .loc-c-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; }
+  .loc-map-c {
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    background: linear-gradient(145deg, var(--paper-deep), var(--paper-warm));
+    position: relative;
+    border: 1px solid var(--line);
+    min-height: 400px;
+  }
+  .loc-map-c::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.6;
+  }
+  .loc-pin-c { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -100%); }
+  .loc-pin-c .p { width: 40px; height: 40px; background: var(--care-600); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: var(--shadow-lg); }
+  .loc-pin-c .p::after { content: ''; position: absolute; top: 11px; left: 11px; width: 18px; height: 18px; background: #fff; border-radius: 50%; }
+  .loc-pin-c .lbl { position: absolute; top: -14px; left: 52px; background: var(--sacred-900); color: #fff; font-size: 12px; padding: 6px 12px; border-radius: 4px; white-space: nowrap; font-weight: 600; box-shadow: var(--shadow-md); }
+
+  .loc-panel { background: var(--sacred-900); color: #fff; border-radius: var(--r-xl); padding: 36px; display: flex; flex-direction: column; }
+  .loc-panel h3 { font-family: var(--font-serif); font-size: 24px; color: #fff; margin: 0 0 4px; }
+  .loc-panel .eyebrow { color: var(--primary-300); }
+  .loc-panel dt { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary-300); font-weight: 700; margin-top: 18px; }
+  .loc-panel dt:first-of-type { margin-top: 24px; }
+  .loc-panel dd { margin: 4px 0 0; font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.7; word-break: keep-all; }
+  .loc-panel .note { margin-top: auto; padding: 14px 16px; background: rgba(127,201,155,0.12); border: 1px solid rgba(127,201,155,0.25); border-radius: var(--r-md); font-size: 13px; color: var(--care-100); line-height: 1.6; display: flex; gap: 10px; align-items: flex-start; }
+</style>
+</head>
+<body class="page-body kr" data-screen-label="Variant C · Civic Modern">
+
+<span class="variant-tag">Variant C · Civic Modern</span>
+
+<header class="hdr hdr--c">
+  <div class="strip">
+    <span><strong>사단법인</strong> 대한예수교장로회 경인교회 부설 · 용인특례시 기흥구</span>
+    <span>문의 · <strong>010-9867-3121</strong></span>
+  </div>
+  <div class="hdr-inner">
+    <a class="hdr-logo" href="#">
+      <span class="hdr-mark">경</span>
+      <span class="hdr-name">
+        <span class="t">우리함께 평생교육·나눔센터</span>
+        <span class="s">For Everyone · Free · Faith-Inclusive</span>
+      </span>
+    </a>
+    <nav class="hdr-nav">
+      <a class="on">홈</a><a>소개</a><a>디지털 교육</a><a>나눔 사역</a><a>커뮤니티</a><a>오시는길</a>
+    </nav>
+    <a href="#" class="hdr-cta">무료 교육 신청 →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-c" data-screen-label="Hero">
+  <div class="hero-c-inner">
+    <div class="hero-main">
+      <div>
+        <span class="tag-pill"><span class="d"></span>사단법인 · <strong>Est. 용인 기흥</strong></span>
+        <h1>배우고 나누며,<br><em>일자리까지.</em></h1>
+        <p class="lede">사단법인 대한예수교장로회 경인교회 부설 우리함께 평생교육·나눔센터가 여러분의 든든한 다리가 되어 드립니다. 종교·연령·장애 무관, 100% 무료.</p>
+      </div>
+      <div class="ctas">
+        <a href="#" class="btn btn--primary">무료 교육 신청하기 <span>→</span></a>
+        <a href="#" class="btn btn--ghost">14평의 기적 보기</a>
+      </div>
+    </div>
+
+    <div class="hero-side">
+      <div class="hero-card hero-card-a">
+        <div>
+          <div class="kicker">Foodbank</div>
+          <h3>이웃과 온기를 나누는<br>가장 가까운 손길</h3>
+        </div>
+        <div class="meta">30+ 가구 정기 배송 <span class="arrow">→</span></div>
+      </div>
+      <div class="hero-card hero-card-b">
+        <div>
+          <div class="kicker">Citizen Press</div>
+          <h3>시민기자단 활동<br>경인블루저널 연계</h3>
+        </div>
+        <div class="meta">용인시의회 기사 게재 <span class="arrow">→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-c" data-screen-label="Stats">
+  <div class="stats-c-inner">
+    <div class="stats-c-head">
+      <div>
+        <span class="eyebrow">14-Pyeong Impact</span>
+        <h2 class="h-2" style="margin-top: 14px;">작지만 큰, <br>14평의 기적.</h2>
+      </div>
+      <p class="body" style="max-width: 48ch;">용인 동백역 메디컬빌딩 213호, 14평 공간에서 시작된 배움과 나눔. 지자체·언론·파트너를 위한 투명한 실적 요약입니다.</p>
+    </div>
+    <div class="stats-c-grid">
+      <div class="stats-tile">
+        <div class="n" data-count="14">14<span class="u">평</span></div>
+        <div class="l">작은 공간에서 시작된 큰 기적</div>
+        <div class="bar"><div class="fill" style="width:100%"></div></div>
+      </div>
+      <div class="stats-tile">
+        <div class="n" data-count="4">4<span class="u">단계</span></div>
+        <div class="l">왕초보~수익창출 디지털 교육</div>
+        <div class="bar"><div class="fill" style="width:85%"></div></div>
+      </div>
+      <div class="stats-tile care">
+        <div class="n" data-count="3">3<span class="u">사역</span></div>
+        <div class="l">푸드뱅크·공간 공유·시민기자단</div>
+        <div class="bar"><div class="fill" style="width:75%"></div></div>
+      </div>
+      <div class="stats-tile care">
+        <div class="n" data-count="100">100<span class="u">%</span></div>
+        <div class="l">전 과정 무료 · 교재비도 없음</div>
+        <div class="bar"><div class="fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION + OUTREACH SPLIT -->
+<section class="split-c" data-screen-label="Programs">
+  <div class="split-c-inner">
+    <div class="panel">
+      <span class="eyebrow">Digital Education</span>
+      <h2 style="margin-top: 10px;">배움이 일자리로</h2>
+      <p>스마트폰이 처음인 어르신부터, 디지털 굿즈로 수익을 만드는 전문가까지. 네 개의 계단에서 시작합니다.</p>
+      <div class="step-list">
+        <div class="step-row">
+          <div class="n">01</div>
+          <div><div class="t">왕초보 기초반</div><div class="s">스마트폰이 처음이세요? 괜찮습니다.</div></div>
+          <div class="meta">주 2회 · 8주</div>
+        </div>
+        <div class="step-row">
+          <div class="n">02</div>
+          <div><div class="t">생활 중급반</div><div class="s">길찾기·병원·모바일 뱅킹까지</div></div>
+          <div class="meta">주 2회 · 10주</div>
+        </div>
+        <div class="step-row">
+          <div class="n">03</div>
+          <div><div class="t">AI 심화·작가반</div><div class="s">AI와 함께 쓰는 내 인생 자서전</div></div>
+          <div class="meta">주 1회 · 12주</div>
+        </div>
+        <div class="step-row hl">
+          <div class="n">04</div>
+          <div><div class="t">수익창출반 · 특별과정</div><div class="s">AI 라벨링·디지털 굿즈 판매</div></div>
+          <div class="meta">월 4회 · 6주</div>
+        </div>
+      </div>
+      <a href="#" class="btn btn--outline" style="margin-top: 24px;">전체 교육 과정 보기 →</a>
+    </div>
+
+    <div class="panel care">
+      <span class="eyebrow eyebrow--on-dark">Outreach Ministry</span>
+      <h2 style="margin-top: 10px;">이웃과 함께하는 사역</h2>
+      <p>푸드뱅크로 식탁을, 공간 공유로 동역자를, 시민기자단으로 이웃의 목소리를.</p>
+      <div class="min-list">
+        <div class="min-row">
+          <div class="min-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16l-1.5 11a2 2 0 01-2 1.8H7.5A2 2 0 015.5 19L4 8z"/><path d="M8 8V6a4 4 0 018 0v2"/></svg></div>
+          <div><h3>푸드뱅크</h3><p>지역 취약계층 식품 전달 · 30가구 이상 정기 배송</p></div>
+          <span class="go">→</span>
+        </div>
+        <div class="min-row">
+          <div class="min-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l9-6 9 6v10a1 1 0 01-1 1H4a1 1 0 01-1-1V10z"/></svg></div>
+          <div><h3>공간 공유</h3><p>14평 공간 개척교회·비영리 단체 무료 대관</p></div>
+          <span class="go">→</span>
+        </div>
+        <div class="min-row">
+          <div class="min-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H8l-4 4V4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+          <div><h3>시민기자단</h3><p>경인블루저널 연계 · 지역 이야기 직접 취재</p></div>
+          <span class="go">→</span>
+        </div>
+      </div>
+      <a href="#" class="btn" style="background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); margin-top: 28px;">자원봉사·기탁 문의 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PASTOR -->
+<section class="pastor-c" data-screen-label="Pastor">
+  <div class="pastor-c-inner">
+    <div class="pastor-c-photo"></div>
+    <div>
+      <span class="eyebrow">Greeting from the Center</span>
+      <h2>기술은 차갑지만,<br>나누는 마음은 따뜻합니다.</h2>
+      <span class="quote-mark">&ldquo;</span>
+      <p>저희는 <strong>14평 남짓한 아담한 공간</strong>에서 시작했지만, 그 안에서 피어나는 꿈은 결코 작지 않습니다. 기술은 차갑지만 그것을 나누는 사람의 마음은 따뜻해야 한다는 믿음으로 어르신과 장애인 이웃의 디지털 자립을 돕고 있습니다.</p>
+      <p>종교·연령·장애와 무관하게 <strong>누구에게나 열려 있는 공간</strong>에 여러분을 초대합니다.</p>
+      <div class="sign">
+        <div class="n">김재완</div>
+        <div class="r">센터장 · 담임 전도사</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-c" data-screen-label="CTA">
+  <div class="cta-c-inner">
+    <div>
+      <span class="eyebrow eyebrow--on-dark" style="color: var(--primary-300);">Apply Now</span>
+      <h2>신청서도, 서류도 필요 없습니다.<br>전화 한 통이면 충분합니다.</h2>
+      <p>종교·연령·장애 무관, 모든 과정 100% 무료.<br>교재비도 받지 않습니다.</p>
+    </div>
+    <div class="cta-phone-box">
+      <div class="l">바로 전화 상담</div>
+      <div class="num">010-9867-3121</div>
+      <div class="s">평일 09:00 – 18:00</div>
+      <a href="tel:010-9867-3121">📞 지금 전화 걸기</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc-c" data-screen-label="Location">
+  <div class="loc-c-inner">
+    <div class="loc-map-c">
+      <div class="loc-pin-c"><div class="p"></div><div class="lbl">우리함께 나눔센터</div></div>
+    </div>
+    <div class="loc-panel">
+      <span class="eyebrow eyebrow--on-dark" style="color: var(--primary-300);">Location</span>
+      <h3 style="margin-top: 6px;">오시는 길</h3>
+      <dl>
+        <dt>주소</dt>
+        <dd>경기도 용인특례시 기흥구 동백죽전대로 341, 213호<br>(동백역 1번 출구 메디컬빌딩)</dd>
+        <dt>상담 전화</dt>
+        <dd>010-9867-3121 · 010-7708-7006</dd>
+        <dt>대중교통</dt>
+        <dd>동백역 1번 출구 도보 5분 / 동백죽전대로 정류장 하차</dd>
+      </dl>
+      <div class="note">
+        <span>♿</span>
+        <span><strong style="color: var(--care-100);">무장애 출입</strong> · 휠체어 및 보행 보조기 이용 시에도 턱이 없어 출입이 매우 편리합니다.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ftr">
+  <div class="ftr-inner">
+    <div class="ftr-brand">
+      <div class="t">우리함께 평생교육·나눔센터</div>
+      <div class="s">사단법인 대한예수교장로회 경인교회 부설</div>
+      <p>용인 동백에서 시작된 14평의 기적. 종교·연령·장애를 넘어 누구에게나 열려 있는 배움과 나눔의 공간.</p>
+    </div>
+    <div><h5>메뉴</h5><ul><li><a>센터 소개</a></li><li><a>디지털 교육</a></li><li><a>나눔 사역</a></li><li><a>오시는길</a></li></ul></div>
+    <div><h5>연락처</h5><ul><li>010-9867-3121</li><li>010-7708-7006</li><li>a365center@gmail.com</li></ul></div>
+    <div><h5>법인</h5><ul><li>사단법인 대한예수교장로회 경인교회</li><li>a365.or.kr</li></ul></div>
+  </div>
+  <div class="ftr-bar">
+    <span>© 2026 사단법인 대한예수교장로회 경인교회</span>
+    <span>Civic Modern · v1</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target; const target = parseInt(el.dataset.count || '0', 10);
+      let cur = 0; const dur = 1400; const start = performance.now();
+      const tick = (t) => { const p = Math.min(1, (t - start) / dur); cur = Math.floor(target * (1 - Math.pow(1 - p, 3))); el.firstChild.nodeValue = String(cur); if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick); obs.unobserve(el);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('[data-count]').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

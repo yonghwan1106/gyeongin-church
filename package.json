@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "경인교회 홈페이지",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "next lint"
   },

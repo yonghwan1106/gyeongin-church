@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>스타일 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<style>
+  body { padding: 48px 56px 80px; max-width: 1080px; margin: 0 auto; background: var(--paper); }
+  h1 { font-family: var(--font-serif); font-size: 40px; letter-spacing: -0.02em; color: var(--sacred-900); margin: 0 0 6px; }
+  .sub { color: var(--primary-700); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 40px; }
+  h2 { font-family: var(--font-serif); font-size: 22px; letter-spacing: -0.01em; color: var(--sacred-900); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  h3 { font-family: var(--font-serif); font-size: 15px; margin: 18px 0 8px; color: var(--sacred-900); }
+
+  .palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .palette.wide { grid-template-columns: repeat(11, 1fr); }
+  .swatch { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--line-soft); }
+  .swatch .color { height: 80px; }
+  .swatch .meta { padding: 8px 10px; background: #fff; }
+  .swatch .name { font-size: 11px; font-weight: 700; color: var(--sacred-900); letter-spacing: 0.02em; }
+  .swatch .hex  { font-size: 10px; color: var(--ink-500); font-family: ui-monospace, SFMono-Regular, monospace; margin-top: 2px; }
+
+  .tw-token { font-family: ui-monospace, monospace; font-size: 11px; color: var(--ink-500); margin-top: 2px; }
+
+  .type-row { display: grid; grid-template-columns: 120px 1fr 160px; gap: 18px; padding: 14px 0; border-bottom: 1px dashed var(--line); align-items: baseline; }
+  .type-row:last-child { border-bottom: 0; }
+  .type-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-700); font-weight: 700; }
+  .type-meta { font-family: ui-monospace, monospace; font-size: 11px; color: var(--ink-500); }
+  .t-display { font-family: var(--font-serif); font-size: 56px; font-weight: 700; letter-spacing: -0.03em; color: var(--sacred-900); line-height: 1.1; }
+  .t-h1 { font-family: var(--font-serif); font-size: 38px; font-weight: 700; letter-spacing: -0.02em; color: var(--sacred-900); line-height: 1.2; }
+  .t-h2 { font-family: var(--font-serif); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--sacred-900); line-height: 1.3; }
+  .t-h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: var(--sacred-900); }
+  .t-lead { font-size: 19px; line-height: 1.7; color: var(--ink-700); word-break: keep-all; }
+  .t-body { font-size: 17px; line-height: 1.8; color: var(--ink-700); word-break: keep-all; }
+  .t-small { font-size: 14px; line-height: 1.7; color: var(--ink-600); }
+  .t-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--primary-600); }
+
+  .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px; }
+  .comp {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px;
+  }
+  .comp .t { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-700); font-weight: 700; margin-bottom: 12px; }
+  .cta-green { display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 22px; border-radius: 999px; background: var(--care-500); color: #fff; font-weight: 600; }
+  .cta-green:hover { background: var(--care-600); }
+  .cta-ghost { display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 22px; border-radius: 999px; background: transparent; color: var(--sacred-900); font-weight: 600; border: 1.5px solid var(--sacred-900); }
+  .cta-gold  { display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 22px; border-radius: 999px; background: var(--sacred-900); color: var(--primary-300); font-weight: 600; }
+
+  .rhythm-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+  .rh { aspect-ratio: 3/2; border-radius: var(--r-md); position: relative; overflow: hidden; border: 1px solid var(--line-soft); }
+  .rh .tag { position: absolute; top: 10px; left: 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sacred-900); background: rgba(255,255,255,0.85); padding: 3px 8px; border-radius: 4px; }
+  .rh.paper { background: var(--paper); }
+  .rh.warm  { background: var(--paper-warm); }
+  .rh.deep  { background: linear-gradient(145deg, #2d2620, #1a1612); }
+  .rh.deep .tag { color: #fff; background: rgba(26,22,18,0.6); }
+  .rh.green { background: linear-gradient(145deg, var(--care-600), var(--care-700)); }
+  .rh.green .tag { color: #fff; background: rgba(0,0,0,0.3); }
+
+  .divider-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 16px; padding: 24px 0; }
+  .divider { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .divider .label { font-size: 11px; color: var(--primary-700); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+  .div-hairline { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--primary-400), transparent); }
+  .div-barcode { width: 100%; display: flex; gap: 3px; justify-content: center; align-items: center; }
+  .div-barcode span { width: 2px; background: var(--primary-500); }
+  .div-serifnum { font-family: var(--font-serif); font-size: 28px; color: var(--primary-600); letter-spacing: 0.4em; }
+
+  code.tok { font-family: ui-monospace, monospace; font-size: 11px; background: var(--primary-100); color: var(--primary-800); padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body class="kr">
+
+  <div class="sub">Style Guide · 경인교회 리디자인</div>
+  <h1>컬러·타이포·컴포넌트 한눈에</h1>
+
+  <h2>1. 컬러 — 기존 토큰 유지, 사용 규칙 정비</h2>
+
+  <h3>Sacred Gold <code class="tok">primary-*</code></h3>
+  <div class="palette wide">
+    <div class="swatch"><div class="color" style="background:#fefdfb"></div><div class="meta"><div class="name">50</div><div class="hex">#FEFDFB</div></div></div>
+    <div class="swatch"><div class="color" style="background:#fdf8ee"></div><div class="meta"><div class="name">100</div><div class="hex">#FDF8EE</div></div></div>
+    <div class="swatch"><div class="color" style="background:#f9edd4"></div><div class="meta"><div class="name">200</div><div class="hex">#F9EDD4</div></div></div>
+    <div class="swatch"><div class="color" style="background:#f3dcb0"></div><div class="meta"><div class="name">300</div><div class="hex">#F3DCB0</div></div></div>
+    <div class="swatch"><div class="color" style="background:#e8c47d"></div><div class="meta"><div class="name">400</div><div class="hex">#E8C47D</div></div></div>
+    <div class="swatch"><div class="color" style="background:#d4a855"></div><div class="meta"><div class="name">500</div><div class="hex">#D4A855</div></div></div>
+    <div class="swatch"><div class="color" style="background:#b8893d"></div><div class="meta"><div class="name">600</div><div class="hex">#B8893D</div></div></div>
+    <div class="swatch"><div class="color" style="background:#966c32"></div><div class="meta"><div class="name">700</div><div class="hex">#966C32</div></div></div>
+    <div class="swatch"><div class="color" style="background:#7a572c"></div><div class="meta"><div class="name">800</div><div class="hex">#7A572C</div></div></div>
+    <div class="swatch"><div class="color" style="background:#654827"></div><div class="meta"><div class="name">900</div><div class="hex">#654827</div></div></div>
+    <div class="swatch"><div class="color" style="background:#3a2712"></div><div class="meta"><div class="name">950</div><div class="hex">#3A2712</div></div></div>
+  </div>
+
+  <h3>Care Green <code class="tok">care-*</code> — CTA·신뢰감</h3>
+  <div class="palette" style="grid-template-columns: repeat(7, 1fr);">
+    <div class="swatch"><div class="color" style="background:#effaf3"></div><div class="meta"><div class="name">50</div><div class="hex">#EFFAF3</div></div></div>
+    <div class="swatch"><div class="color" style="background:#d5f1de"></div><div class="meta"><div class="name">100</div><div class="hex">#D5F1DE</div></div></div>
+    <div class="swatch"><div class="color" style="background:#7fc99b"></div><div class="meta"><div class="name">300</div><div class="hex">#7FC99B</div></div></div>
+    <div class="swatch"><div class="color" style="background:#2e7d5c"></div><div class="meta"><div class="name">500</div><div class="hex">#2E7D5C</div></div></div>
+    <div class="swatch"><div class="color" style="background:#246548"></div><div class="meta"><div class="name">600</div><div class="hex">#246548</div></div></div>
+    <div class="swatch"><div class="color" style="background:#1c4f37"></div><div class="meta"><div class="name">700</div><div class="hex">#1C4F37</div></div></div>
+    <div class="swatch"><div class="color" style="background:#163d2b"></div><div class="meta"><div class="name">800</div><div class="hex">#163D2B</div></div></div>
+  </div>
+
+  <h3>Sacred · Warm · Ink</h3>
+  <div class="palette" style="grid-template-columns: repeat(10, 1fr);">
+    <div class="swatch"><div class="color" style="background:#1a1612"></div><div class="meta"><div class="name">sacred-900</div><div class="hex">#1A1612</div></div></div>
+    <div class="swatch"><div class="color" style="background:#2d2620"></div><div class="meta"><div class="name">sacred-800</div><div class="hex">#2D2620</div></div></div>
+    <div class="swatch"><div class="color" style="background:#433930"></div><div class="meta"><div class="name">sacred-700</div><div class="hex">#433930</div></div></div>
+    <div class="swatch"><div class="color" style="background:#fffefb"></div><div class="meta"><div class="name">warm-50</div><div class="hex">#FFFEFB</div></div></div>
+    <div class="swatch"><div class="color" style="background:#fdfaf4"></div><div class="meta"><div class="name">warm-100</div><div class="hex">#FDFAF4</div></div></div>
+    <div class="swatch"><div class="color" style="background:#faf5e9"></div><div class="meta"><div class="name">warm-200</div><div class="hex">#FAF5E9</div></div></div>
+    <div class="swatch"><div class="color" style="background:#f5ebda"></div><div class="meta"><div class="name">warm-300</div><div class="hex">#F5EBDA</div></div></div>
+    <div class="swatch"><div class="color" style="background:#ede0c8"></div><div class="meta"><div class="name">warm-400</div><div class="hex">#EDE0C8</div></div></div>
+    <div class="swatch"><div class="color" style="background:#2d2620"></div><div class="meta"><div class="name">ink-800</div><div class="hex">#2D2620</div></div></div>
+    <div class="swatch"><div class="color" style="background:#5b4d40"></div><div class="meta"><div class="name">ink-600</div><div class="hex">#5B4D40</div></div></div>
+  </div>
+
+  <div style="background:#fffdf7; border:1px solid var(--line); border-radius: var(--r-md); padding: 14px 18px; margin-top: 16px; font-size: 14px; line-height: 1.7; color: var(--ink-700);">
+    <strong style="color: var(--sacred-900);">사용 규칙</strong> &middot; 헤드라인·라인 장식은 <code class="tok">primary-500~700</code>, CTA는 기본 <code class="tok">care-500</code>, 법인·공식 문서 톤은 <code class="tok">sacred-900</code>. 큰 면적 그라디언트는 <code class="tok">warm-100→warm-200</code> 1 단계 이내로 제한.
+  </div>
+
+  <h2>2. 타이포 — Noto Serif KR × Pretendard Variable</h2>
+  <div class="type-row">
+    <div class="type-label">Display</div>
+    <div class="t-display">14평의 기적</div>
+    <div class="type-meta">Noto Serif KR · 56/1.1 · -3%</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">H1</div>
+    <div class="t-h1">배우고 나누며 일자리까지!</div>
+    <div class="type-meta">Noto Serif KR · 38/1.2 · -2%</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">H2</div>
+    <div class="t-h2">이웃과 함께하는 세 가지 사역</div>
+    <div class="type-meta">Noto Serif KR · 26/1.3</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">H3</div>
+    <div class="t-h3">왕초보 기초반 &middot; 스마트폰이 처음이세요?</div>
+    <div class="type-meta">Noto Serif KR · 20/1.4</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">Lede</div>
+    <div class="t-lead">사단법인 경인교회 부설 우리함께 평생교육·나눔센터가 여러분의 든든한 다리가 되어 드립니다.</div>
+    <div class="type-meta">Pretendard · 19/1.7</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">Body</div>
+    <div class="t-body">기술은 차갑지만, 그것을 나누는 사람의 마음은 따뜻해야 한다는 믿음으로 어르신과 장애인 이웃의 디지털 자립을 돕고 있습니다.</div>
+    <div class="type-meta">Pretendard · 17/1.8 (최소)</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">Small</div>
+    <div class="t-small">사단법인 대한예수교장로회 경인교회 &middot; 우리함께 평생교육·나눔센터</div>
+    <div class="type-meta">Pretendard · 14/1.7</div>
+  </div>
+  <div class="type-row">
+    <div class="type-label">Eyebrow</div>
+    <div class="t-eyebrow">Digital Education</div>
+    <div class="type-meta">Pretendard · 11/0.3em tracking</div>
+  </div>
+
+  <h2>3. 섹션 배경 교차 패턴</h2>
+  <div class="rhythm-row">
+    <div class="rh paper"><span class="tag">Paper · 기본</span></div>
+    <div class="rh warm"><span class="tag">Warm · 보조</span></div>
+    <div class="rh deep"><span class="tag" style="color:#fff">Sacred · 강조(1회)</span></div>
+    <div class="rh warm"><span class="tag">Warm</span></div>
+    <div class="rh green"><span class="tag">Care · CTA 섹션</span></div>
+    <div class="rh paper"><span class="tag">Paper</span></div>
+  </div>
+  <p class="t-small" style="margin-top: 10px;">
+    데스크탑 전체 시안에서 섹션은 <strong>Paper → Warm → Paper → Sacred → Warm → Care → Paper</strong> 순으로 배치됩니다. Sacred·Care 어두운 섹션은 한 페이지에 각 1회만.
+  </p>
+
+  <h2>4. 섹션 디바이더 — ◆ 대안 3종</h2>
+  <div class="divider-row">
+    <div class="divider">
+      <div class="div-hairline"></div>
+      <div class="label">Hairline · 1px gradient</div>
+    </div>
+    <div class="divider">
+      <div class="div-barcode">
+        <span style="height:16px"></span><span style="height:22px"></span><span style="height:12px"></span><span style="height:28px"></span><span style="height:16px"></span><span style="height:22px"></span><span style="height:10px"></span><span style="height:18px"></span><span style="height:14px"></span>
+      </div>
+      <div class="label">Barcode · 시민기자단 톤</div>
+    </div>
+    <div class="divider">
+      <div class="div-serifnum">01 &middot; 02</div>
+      <div class="label">Serif numeral · 챕터</div>
+    </div>
+  </div>
+
+  <h2>5. 컴포넌트 스포일러</h2>
+  <div class="comp-grid">
+    <div class="comp">
+      <div class="t">Primary CTA</div>
+      <button class="cta-green">무료 교육 신청 <span>→</span></button>
+    </div>
+    <div class="comp">
+      <div class="t">Secondary CTA</div>
+      <button class="cta-ghost">센터 비전 보기</button>
+    </div>
+    <div class="comp">
+      <div class="t">Dark / Phone CTA</div>
+      <button class="cta-gold">📞 010-9867-3121</button>
+    </div>
+  </div>
+
+</body>
+</html>

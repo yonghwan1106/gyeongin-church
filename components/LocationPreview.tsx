@@ -1,102 +1,343 @@
 import Link from "next/link";
+import { siteIdentity } from "@/lib/navigation";
 
-export default function LocationPreview() {
+/* ------------------------------------------------------------------ */
+/* Variant A — Desktop (md+)                                           */
+/* ------------------------------------------------------------------ */
+function VariantA() {
   return (
-    <section className="py-24 bg-gradient-to-b from-warm-200 to-warm-100 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-300/50 to-transparent" />
+    <section className="bg-paper py-24 px-8 border-t border-line">
+      <div className="max-w-[1180px] mx-auto grid grid-cols-2 gap-14 items-start">
 
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
-            Location
-          </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-6">
-            오시는 길
+        {/* Left: dl info */}
+        <div>
+          <p className="text-primary-700 text-[11px] tracking-[0.2em] uppercase font-bold kr-tight mb-3">
+            Location · 용인 동백
+          </p>
+          <h2
+            className="font-serif font-bold text-sacred-900 kr-tight mb-8"
+            style={{ fontSize: "clamp(36px, 4vw, 56px)", letterSpacing: "-0.02em" }}
+          >
+            찾아오시는 길
           </h2>
-          <div className="flex items-center justify-center gap-4">
-            <span className="w-16 h-px bg-gradient-to-r from-transparent to-primary-400" />
-            <span className="text-primary-500">✦</span>
-            <span className="w-16 h-px bg-gradient-to-l from-transparent to-primary-400" />
+
+          <dl>
+            {/* 주소 */}
+            <div>
+              <dt className="text-[12px] tracking-[0.2em] uppercase text-primary-700 font-bold mt-0">
+                주소
+              </dt>
+              <dd className="mt-1.5 text-[17px] text-ink-700 leading-[1.7] [word-break:keep-all]">
+                <strong className="text-sacred-900">{siteIdentity.address}</strong>
+                <span className="block text-[15px] text-ink-600 mt-0.5">
+                  ({siteIdentity.addressDetail})
+                </span>
+              </dd>
+            </div>
+
+            {/* 가장 가까운 역 */}
+            <div>
+              <dt className="text-[12px] tracking-[0.2em] uppercase text-primary-700 font-bold mt-[22px]">
+                가장 가까운 역
+              </dt>
+              <dd className="mt-1.5 text-[17px] text-ink-700 leading-[1.7] [word-break:keep-all]">
+                동백역 1번 출구 도보 5분
+              </dd>
+            </div>
+
+            {/* 연락처 */}
+            <div>
+              <dt className="text-[12px] tracking-[0.2em] uppercase text-primary-700 font-bold mt-[22px]">
+                연락처
+              </dt>
+              <dd className="mt-1.5 text-[17px] text-ink-700 leading-[1.7] [word-break:keep-all]">
+                <strong className="text-sacred-900">{siteIdentity.phonePrimary}</strong>
+                {siteIdentity.phoneSecondary && (
+                  <span className="text-ink-500"> · {siteIdentity.phoneSecondary}</span>
+                )}
+              </dd>
+            </div>
+
+            {/* 대중교통 */}
+            <div>
+              <dt className="text-[12px] tracking-[0.2em] uppercase text-primary-700 font-bold mt-[22px]">
+                대중교통
+              </dt>
+              <dd className="mt-1.5 text-[17px] text-ink-700 leading-[1.7] [word-break:keep-all]">
+                버스 · 동백죽전대로 정류장 하차
+                <span className="block text-[15px] text-ink-600 mt-0.5">
+                  자가용 이용 시 메디컬빌딩 주차장 이용
+                </span>
+              </dd>
+            </div>
+          </dl>
+
+          {/* Accessibility note */}
+          <div className="mt-[30px] p-[18px_22px] bg-care-50 border border-care-200 rounded-[14px] flex gap-3.5">
+            <div
+              className="flex-shrink-0 w-10 h-10 rounded-[10px] bg-care-500 text-white grid place-items-center font-bold"
+              aria-hidden="true"
+            >
+              ♿
+            </div>
+            <p className="text-[15px] leading-[1.7] text-care-800 m-0">
+              <strong className="text-care-800">무장애 출입</strong>
+              {" · "}
+              {siteIdentity.accessibility}
+            </p>
+          </div>
+
+          {/* CTA row */}
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a
+              href={`tel:${siteIdentity.phonePrimary}`}
+              className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full bg-care-500 text-paper-warm font-semibold text-[15px] transition-opacity hover:opacity-85"
+            >
+              <svg
+                width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.45 5.45l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              전화하기
+            </a>
+            <a
+              href="https://map.kakao.com/link/search/경기도 용인특례시 기흥구 동백죽전대로 341"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full border border-primary-700 text-primary-700 font-semibold text-[15px] transition-colors hover:bg-primary-50"
+            >
+              <svg
+                width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              카카오맵 열기
+            </a>
           </div>
         </div>
 
-        {/* Content Card */}
-        <div className="sacred-card rounded-3xl p-8 md:p-12 max-w-4xl mx-auto animate-scale-in">
-          <div className="grid md:grid-cols-2 gap-10">
-            {/* 교회 위치 */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-sacred-900">교회 위치</h3>
-              </div>
-              <ul className="space-y-4 text-gray-600">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary-500 mt-1">•</span>
-                  <div>
-                    <p className="font-medium text-sacred-900">주소</p>
-                    <p className="text-sm">경기도 용인특례시 기흥구 동백죽전대로 341, 213호</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary-500 mt-1">•</span>
-                  <div>
-                    <p className="font-medium text-sacred-900">전화</p>
-                    <p className="text-sm">010-7708-7006 / 010-9867-3121</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* 대중교통 안내 */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                  </svg>
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-sacred-900">대중교통 안내</h3>
-              </div>
-              <ul className="space-y-4 text-gray-600">
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">🚇</span>
-                  <div>
-                    <p className="font-medium text-sacred-900">지하철</p>
-                    <p className="text-sm">동백역 1번 출구 도보 5분</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🚌</span>
-                  <div>
-                    <p className="font-medium text-sacred-900">버스</p>
-                    <p className="text-sm">동백죽전대로 정류장 하차 후 도보 이동</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <div className="mt-10 text-center">
+        {/* Right: Google Maps embed */}
+        <div className="relative aspect-[4/3] rounded-[20px] overflow-hidden border border-line shadow-md">
+          <iframe
+            src="https://www.google.com/maps?q=37.270468,127.150520&hl=ko&z=18&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="우리함께 평생교육·나눔센터 위치 지도"
+            allowFullScreen
+            className="absolute inset-0"
+          />
+          <a
+            href="https://www.google.com/maps/place/메디슨타워+경인교회/@37.270468,127.150520,18z"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-sacred-900 text-[12px] font-semibold tracking-wide px-3 py-2 rounded-full shadow-md hover:bg-white transition"
+          >
+            Google 지도 열기 →
+          </a>
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none">
             <Link
               href="/location"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-medium transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,168,85,0.4)] hover-lift"
+              className="pointer-events-auto px-5 py-2 rounded-full bg-paper/90 backdrop-blur-sm border border-line text-ink-700 text-[13px] font-semibold tracking-wide hover:bg-paper-warm transition-colors shadow-sm"
             >
-              자세히 보기
-              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              상세 오시는 길 →
             </Link>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Variant B — Mobile (below md)  — original dark map + pulse pin     */
+/* ------------------------------------------------------------------ */
+function VariantB() {
+  return (
+    <section className="bg-paper-warm py-[120px] px-8 border-t border-line">
+      <div className="max-w-[1180px] mx-auto grid grid-cols-1 gap-16 items-start">
+
+        {/* Left: Description list */}
+        <div>
+          <p className="text-primary-700 text-[11px] tracking-[0.2em] uppercase font-bold kr-tight mb-3">
+            LOCATION · 용인 동백
+          </p>
+          <h2
+            className="font-serif font-bold text-sacred-900 kr-tight mb-8"
+            style={{ fontSize: "clamp(36px, 4vw, 56px)", letterSpacing: "-0.02em" }}
+          >
+            찾아오시는 길
+          </h2>
+
+          <dl className="space-y-0">
+            {/* 주소 */}
+            <div className="mt-0">
+              <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                주소
+              </dt>
+              <dd
+                className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]"
+                style={{ fontSize: "clamp(18px, 1.5vw, 22px)" }}
+              >
+                {siteIdentity.address}
+                <span className="block text-[15px] text-ink-600 font-sans mt-0.5">
+                  ({siteIdentity.addressDetail})
+                </span>
+              </dd>
+            </div>
+
+            {/* 가장 가까운 역 */}
+            <div className="mt-6">
+              <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                가장 가까운 역
+              </dt>
+              <dd
+                className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]"
+                style={{ fontSize: "clamp(18px, 1.5vw, 22px)" }}
+              >
+                동백역 1번 출구 도보 5분
+              </dd>
+            </div>
+
+            {/* 전화 */}
+            <div className="mt-6">
+              <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                전화
+              </dt>
+              <dd
+                className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]"
+                style={{ fontSize: "clamp(18px, 1.5vw, 22px)" }}
+              >
+                {siteIdentity.phonePrimary}
+                {siteIdentity.phoneSecondary && (
+                  <span className="text-ink-500 text-[15px] font-sans"> · {siteIdentity.phoneSecondary}</span>
+                )}
+              </dd>
+            </div>
+
+            {/* 대중교통 */}
+            <div className="mt-6">
+              <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                대중교통
+              </dt>
+              <dd
+                className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]"
+                style={{ fontSize: "clamp(18px, 1.5vw, 22px)" }}
+              >
+                버스 · 동백죽전대로 정류장 하차
+                <span className="block text-[15px] text-ink-600 font-sans mt-0.5">
+                  자가용 이용 시 메디컬빌딩 주차장 이용
+                </span>
+              </dd>
+            </div>
+          </dl>
+
+          {/* Accessibility note */}
+          <div className="mt-6 p-4 bg-care-50 border border-care-200 rounded-[14px] flex gap-3">
+            <div
+              className="w-10 h-10 rounded-[10px] bg-care-500 text-white grid place-items-center font-bold flex-shrink-0"
+              aria-hidden="true"
+            >
+              ♿
+            </div>
+            <p className="text-[14px] leading-[1.7] text-care-800 kr m-0">
+              <strong className="text-care-800">무장애 출입</strong>
+              {" · "}
+              {siteIdentity.accessibility}
+            </p>
+          </div>
+
+          {/* CTA row */}
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a
+              href={`tel:${siteIdentity.phonePrimary}`}
+              className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full bg-care-500 text-paper-warm font-semibold text-[15px] transition-opacity hover:opacity-85"
+            >
+              <svg
+                width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.45 5.45l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              전화하기
+            </a>
+            <a
+              href="https://map.kakao.com/link/search/경기도 용인특례시 기흥구 동백죽전대로 341"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full border border-primary-700 text-primary-700 font-semibold text-[15px] transition-colors hover:bg-primary-50"
+            >
+              <svg
+                width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              카카오맵 열기
+            </a>
+          </div>
+        </div>
+
+        {/* Right: Google Maps embed */}
+        <div className="relative overflow-hidden rounded-[14px] border border-line shadow-md" style={{ aspectRatio: "4/3" }}>
+          <iframe
+            src="https://www.google.com/maps?q=37.270468,127.150520&hl=ko&z=18&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="우리함께 평생교육·나눔센터 위치 지도"
+            allowFullScreen
+            className="absolute inset-0"
+          />
+          <a
+            href="https://www.google.com/maps/place/메디슨타워+경인교회/@37.270468,127.150520,18z"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-sacred-900 text-[12px] font-semibold tracking-wide px-3 py-2 rounded-full shadow-md hover:bg-white transition"
+          >
+            Google 지도 열기 →
+          </a>
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none">
+            <Link
+              href="/location"
+              className="pointer-events-auto px-5 py-2 rounded-full bg-paper/90 backdrop-blur-sm border border-line text-ink-700 text-[13px] font-semibold tracking-wide hover:bg-paper-warm transition-colors shadow-sm"
+            >
+              상세 오시는 길 →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Export: A on desktop (md+), B on mobile (below md)                  */
+/* ------------------------------------------------------------------ */
+export default function LocationPreview() {
+  return (
+    <>
+      {/* Desktop: Variant A */}
+      <div className="hidden md:block">
+        <VariantA />
+      </div>
+
+      {/* Mobile: Variant B */}
+      <div className="md:hidden">
+        <VariantB />
+      </div>
+    </>
   );
 }

@@ -1,200 +1,229 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import PageHeader from "@/components/PageHeader";
+import { siteIdentity } from "@/lib/navigation";
 
 export const metadata: Metadata = {
-  title: "오시는길 | 경인교회",
-  description: "경인교회 위치 및 오시는 방법을 안내합니다.",
+  title: "찾아오시는 길",
+  description:
+    "동백역 1번 출구 메디컬빌딩 213호. 휠체어·보행 보조기 이용자도 편하게 출입 가능한 무장애 평생교육·나눔센터.",
 };
 
-const transportInfo = [
+/* ─── 대중교통 3열 데이터 ─────────────────────────────── */
+const transport = [
   {
+    id: "subway",
+    eyebrow: "지하철",
+    title: "분당선 동백역",
+    body: "1번 출구 도보 약 3분\n메디컬빌딩 정면 입구",
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="16" rx="3" />
+        <path d="M3 10h18M7 15h1m8 0h1" />
+        <path d="M7 20l-1 2m12-2 1 2" />
       </svg>
     ),
-    title: "지하철",
-    description: "동백역(에버라인) 1번 출구 도보 5분",
-    bgColor: "from-blue-100 to-blue-200",
-    iconColor: "text-blue-600",
   },
   {
+    id: "bus",
+    eyebrow: "버스",
+    title: "5001 · 5002 · 66 등",
+    body: "동백죽전대로 정류장 하차\n도보 2분 이내",
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" />
+        <path d="M4 11h16" />
+        <circle cx="7.5" cy="17.5" r="1.5" />
+        <circle cx="16.5" cy="17.5" r="1.5" />
+        <path d="M4 17H2m20 0h-2" />
       </svg>
     ),
-    title: "버스",
-    description: "동백죽전대로 정류장 하차 후 도보 이동",
-    bgColor: "from-green-100 to-green-200",
-    iconColor: "text-green-600",
   },
   {
+    id: "car",
+    eyebrow: "자가용 · 주차",
+    title: "메디컬빌딩 주차장",
+    body: "용인세브란스병원 입구 방면\n빌딩 지하 주차장 무료 이용",
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M5 17H3v-5l2.5-6H18.5l2.5 6v5h-2" />
+        <circle cx="7.5" cy="17.5" r="1.5" />
+        <circle cx="16.5" cy="17.5" r="1.5" />
+        <path d="M5 12h14" />
       </svg>
     ),
-    title: "자가용",
-    description: "용인세브란스병원 입구 메디컬빌딩",
-    bgColor: "from-orange-100 to-orange-200",
-    iconColor: "text-orange-600",
   },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-      </svg>
-    ),
-    title: "주차",
-    description: "메디컬빌딩 주차장 이용 가능",
-    bgColor: "from-purple-100 to-purple-200",
-    iconColor: "text-purple-600",
-  },
+];
+
+/* ─── 주변 편의시설 2열 ───────────────────────────────── */
+const amenities = [
+  { label: "용인세브란스병원", note: "도보 1분, 의료 접근 최적" },
+  { label: "동백 CGV · 롯데마트", note: "도보 5분, 쇼핑·문화시설" },
+  { label: "카카오뱅크 ATM · 우리은행", note: "빌딩 1층 내 금융 창구" },
+  { label: "스타벅스 동백역점", note: "도보 3분, 미팅·대기 공간" },
+  { label: "동백 주민센터", note: "도보 7분, 행정 원스톱" },
+  { label: "동백어린이공원", note: "도보 4분, 동반 가족 휴식" },
 ];
 
 export default function LocationPage() {
   return (
     <div className="pt-20">
-      {/* Page Header */}
-      <section className="relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero_exterior_1768878683608.png"
-            alt="오시는길 배경"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-sacred-900/70" />
-        </div>
 
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10 text-white">
-          <span className="text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 block animate-fade-in-up">
-            Location
-          </span>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up delay-100 text-white drop-shadow-lg">
-            오시는길
-          </h1>
-          <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in delay-200">
-            <span className="w-12 h-px bg-gradient-to-r from-transparent to-primary-400" />
-            <span className="text-primary-400">✦</span>
-            <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
-          </div>
-          <p className="text-primary-100 text-lg max-w-2xl mx-auto animate-fade-in-up delay-300 drop-shadow-md">
-            경인교회 위치를 안내합니다
-          </p>
-        </div>
-      </section>
+      {/* ① PageHeader */}
+      <PageHeader
+        eyebrow="Location · 용인 동백"
+        title="찾아오시는 길"
+        subtitle={`${siteIdentity.address}\n${siteIdentity.addressDetail}`}
+        backgroundImage="/images/hero_exterior_1768878683608.png"
+      />
 
-      {/* Map Section */}
-      <section className="py-24 bg-gradient-to-b from-warm-100 to-warm-200 relative overflow-hidden">
-        <div className="absolute top-20 right-10 w-32 h-32 border border-primary-300/30 rounded-full" />
+      {/* ② 위치 안내 — dl 좌 + 가상지도 우 */}
+      <section className="bg-paper-warm py-24 px-4 border-t border-line">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
-              Map
-            </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-6">
-              교회 위치
-            </h2>
-            <div className="flex items-center justify-center gap-4">
-              <span className="w-16 h-px bg-gradient-to-r from-transparent to-primary-400" />
-              <span className="text-primary-500">✦</span>
-              <span className="w-16 h-px bg-gradient-to-l from-transparent to-primary-400" />
-            </div>
-          </div>
-
-          {/* Map Placeholder */}
-          {/* Map Placeholder */}
-          <div className="sacred-card rounded-3xl h-96 mb-10 overflow-hidden relative">
-            <iframe
-              src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%ED%8A%B9%EB%A1%80%EC%8B%9C%20%EA%B8%B0%ED%9D%A5%EA%B5%AC%20%EB%8F%99%EB%B0%B1%EC%A3%BD%EC%A0%84%EB%8C%80%EB%A1%9C%20341&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="경인교회 위치"
-            />
-          </div>
-
-          {/* Address Info */}
-          <div className="sacred-card rounded-3xl p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <svg className="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-semibold text-sacred-900 mb-3">주소</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    경기도 용인특례시 기흥구<br />
-                    동백죽전대로 341, 213호<br />
-                    <span className="text-sm text-gray-500">(동백역 1번 출구 도보 5분 / 용인세브란스병원 입구 메디컬빌딩)</span>
-                  </p>
-                </div>
+          {/* 좌: Description list */}
+          <div>
+            <dl className="space-y-0">
+              <div>
+                <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                  주소
+                </dt>
+                <dd className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]" style={{ fontSize: "clamp(17px, 1.4vw, 21px)" }}>
+                  {siteIdentity.address}
+                  <span className="block text-[15px] text-ink-600 font-sans mt-0.5">
+                    ({siteIdentity.addressDetail})
+                  </span>
+                </dd>
               </div>
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <svg className="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-semibold text-sacred-900 mb-3">연락처</h3>
-                  <ul className="text-gray-600 space-y-2">
-                    <li>전화: 010-7708-7006 / 010-9867-3121</li>
-                    <li>이메일: a365center@gmail.com</li>
-                    <li>홈페이지: www.a365.or.kr</li>
-                  </ul>
-                </div>
+
+              <div className="mt-7">
+                <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                  가장 가까운 역
+                </dt>
+                <dd className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]" style={{ fontSize: "clamp(17px, 1.4vw, 21px)" }}>
+                  분당선 동백역 1번 출구 도보 3분
+                </dd>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Transportation */}
-      <section className="py-24 bg-gradient-to-b from-warm-200 to-warm-100 relative overflow-hidden">
-        <div className="absolute bottom-20 left-10 w-48 h-48 bg-primary-200/30 rounded-full blur-3xl" />
+              <div className="mt-7">
+                <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                  전화
+                </dt>
+                <dd className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]" style={{ fontSize: "clamp(17px, 1.4vw, 21px)" }}>
+                  <a href={`tel:${siteIdentity.phonePrimary}`} className="hover:underline underline-offset-4">
+                    {siteIdentity.phonePrimary}
+                  </a>
+                </dd>
+              </div>
 
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
-              Transportation
-            </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-6">
-              대중교통 안내
-            </h2>
-            <div className="flex items-center justify-center gap-4">
-              <span className="w-16 h-px bg-gradient-to-r from-transparent to-primary-400" />
-              <span className="text-primary-500">✦</span>
-              <span className="w-16 h-px bg-gradient-to-l from-transparent to-primary-400" />
-            </div>
-          </div>
+              <div className="mt-7">
+                <dt className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold font-serif kr-tight">
+                  대중교통
+                </dt>
+                <dd className="mt-1.5 font-serif text-sacred-900 kr leading-[1.8]" style={{ fontSize: "clamp(17px, 1.4vw, 21px)" }}>
+                  버스 · 동백죽전대로 정류장 하차
+                  <span className="block text-[15px] text-ink-600 font-sans mt-0.5">
+                    자가용 이용 시 메디컬빌딩 주차장 이용
+                  </span>
+                </dd>
+              </div>
+            </dl>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {transportInfo.map((item, index) => (
-              <div
-                key={item.title}
-                className="sacred-card rounded-2xl p-8 hover-lift animate-scale-in"
-                style={{ animationDelay: `${index * 100}ms` }}
+            {/* CTA 버튼 행 */}
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href={`tel:${siteIdentity.phonePrimary}`}
+                className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full bg-care-500 text-paper-warm font-semibold text-[15px] transition-opacity hover:opacity-85"
               >
-                <div className="flex items-start gap-5">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${item.bgColor} rounded-2xl flex items-center justify-center flex-shrink-0`}>
-                    <span className={item.iconColor}>{item.icon}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl font-semibold text-sacred-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.45 5.45l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                전화하기
+              </a>
+              <a
+                href="https://map.kakao.com/link/search/경기도 용인특례시 기흥구 동백죽전대로 341"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full border border-primary-700 text-primary-700 font-semibold text-[15px] transition-colors hover:bg-primary-50"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                카카오맵 열기
+              </a>
+            </div>
+          </div>
+
+          {/* 우: 구글 지도 임베드 */}
+          <div>
+            <div className="relative aspect-[4/3] rounded-[20px] overflow-hidden border border-line shadow-md">
+              <iframe
+                src="https://www.google.com/maps?q=37.270468,127.150520&hl=ko&z=18&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="우리함께 평생교육·나눔센터 위치 지도"
+                allowFullScreen
+                className="absolute inset-0"
+              />
+              <a
+                href="https://www.google.com/maps/place/메디슨타워+경인교회/@37.270468,127.150520,18z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-sacred-900 text-[12px] font-semibold tracking-wide px-3 py-2 rounded-full shadow-md hover:bg-white transition"
+              >
+                Google 지도 열기 →
+              </a>
+            </div>
+            <a
+              href="https://map.kakao.com/link/search/경기도 용인특례시 기흥구 동백죽전대로 341"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-3 text-[13px] text-primary-700 hover:text-primary-600 font-medium"
+            >
+              카카오맵에서도 보기 →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ③ 대중교통 3열 */}
+      <section className="bg-paper-warm py-24 px-4 border-t border-line">
+        <div className="max-w-[1180px] mx-auto">
+          <p className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold kr-tight mb-3">
+            Transportation
+          </p>
+          <h2
+            className="font-serif font-bold text-sacred-900 kr-tight mb-12"
+            style={{ fontSize: "clamp(28px, 3vw, 44px)", letterSpacing: "-0.02em" }}
+          >
+            대중교통 안내
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {transport.map((item) => (
+              <div
+                key={item.id}
+                className="sacred-card rounded-[14px] p-8 flex flex-col gap-5"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 flex-shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-[11px] tracking-[0.18em] text-primary-700 uppercase font-bold kr-tight mb-1">
+                    {item.eyebrow}
+                  </p>
+                  <h3
+                    className="font-serif font-bold text-sacred-900 kr-tight mb-2"
+                    style={{ fontSize: "clamp(17px, 1.4vw, 20px)" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-[15px] text-ink-600 kr leading-[1.8] whitespace-pre-line">
+                    {item.body}
+                  </p>
                 </div>
               </div>
             ))}
@@ -202,41 +231,122 @@ export default function LocationPage() {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-24 bg-gradient-to-b from-warm-100 to-warm-200">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-sacred-800 via-sacred-900 to-sacred-800" />
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(212,168,85,0.15)_0%,transparent_50%)]" />
+      {/* ④ 주변 편의시설 2열 */}
+      <section className="bg-paper py-24 px-4 border-t border-line">
+        <div className="max-w-[1180px] mx-auto">
+          <p className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold kr-tight mb-3">
+            Nearby
+          </p>
+          <h2
+            className="font-serif font-bold text-sacred-900 kr-tight mb-4"
+            style={{ fontSize: "clamp(28px, 3vw, 44px)", letterSpacing: "-0.02em" }}
+          >
+            주변 편의시설
+          </h2>
+          <p className="text-[17px] text-ink-600 kr leading-[1.8] mb-12 max-w-prose">
+            센터 주변에는 의료·금융·생활 편의시설이 도보권에 집중되어 있어
+            방문 전후 다양한 용무를 함께 처리하시기 편합니다.
+          </p>
 
-            <div className="relative z-10 p-10 md:p-14 text-center text-white">
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="font-serif text-3xl font-bold mb-4">문의하기</h3>
-              <p className="text-primary-200 mb-8 max-w-md mx-auto leading-relaxed">
-                교회 방문에 대한 문의사항이 있으시면 언제든지 연락주세요.
-              </p>
-              <a
-                href="tel:010-7708-7006"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full font-medium transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,168,85,0.4)] hover-lift"
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {amenities.map((a) => (
+              <li
+                key={a.label}
+                className="flex items-start gap-4 p-5 rounded-[14px] border border-line bg-paper-warm"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                전화 문의
-              </a>
-              <div className="mt-10 flex items-center justify-center gap-4">
-                <span className="w-12 h-px bg-gradient-to-r from-transparent to-primary-400" />
-                <span className="text-primary-400">✦</span>
-                <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
-              </div>
-            </div>
+                <span
+                  className="mt-1 w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p
+                    className="font-serif font-semibold text-sacred-900 kr-tight"
+                    style={{ fontSize: "clamp(16px, 1.2vw, 18px)" }}
+                  >
+                    {a.label}
+                  </p>
+                  <p className="text-[14px] text-ink-500 kr mt-0.5">{a.note}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ⑤ 무장애 안내 — sacred-900 다크, 에디토리얼 인용문 */}
+      <section className="py-24 px-4 border-t border-line" style={{ background: "var(--color-sacred-900)" }}>
+        <div className="max-w-[880px] mx-auto text-center">
+          <p
+            className="text-primary-400 text-[11px] tracking-[0.25em] uppercase font-bold kr-tight mb-8"
+          >
+            Accessibility · 무장애 안내
+          </p>
+
+          {/* 큰 인용문 */}
+          <blockquote
+            className="font-serif font-bold text-paper-warm kr-tight mb-8 leading-[1.35]"
+            style={{ fontSize: "clamp(22px, 3.2vw, 42px)", letterSpacing: "-0.025em" }}
+          >
+            &ldquo;휠체어·보행 보조기 사용자도<br className="hidden sm:block" />
+            편하게 출입 가능합니다.&rdquo;
+          </blockquote>
+
+          <p className="text-[17px] text-primary-200 kr leading-[1.8] max-w-prose mx-auto mb-6">
+            {siteIdentity.accessibility} 메디컬빌딩 1층 입구부터 213호까지
+            엘리베이터 이용이 가능하며, 안내 직원이 도움을 드립니다.
+          </p>
+
+          <div className="flex items-center justify-center gap-4" aria-hidden="true">
+            <span className="w-16 h-px bg-primary-700" />
+            <span className="text-primary-600 text-[18px]">♿</span>
+            <span className="w-16 h-px bg-primary-700" />
           </div>
         </div>
       </section>
+
+      {/* ⑥ 맨 하단 CTA — 전화 타입 strong */}
+      <section className="bg-paper-warm py-20 px-4 border-t border-line">
+        <div className="max-w-[720px] mx-auto text-center">
+          <p className="text-[11px] tracking-[0.2em] text-primary-700 uppercase font-bold kr-tight mb-4">
+            Contact
+          </p>
+          <h2
+            className="font-serif font-bold text-sacred-900 kr-tight mb-4"
+            style={{ fontSize: "clamp(24px, 2.8vw, 38px)", letterSpacing: "-0.02em" }}
+          >
+            길이 헷갈리시면 전화 한 통
+          </h2>
+          <p className="text-[17px] text-ink-600 kr leading-[1.8] mb-8">
+            언제든지 편하게 연락주세요. 친절하게 안내해 드리겠습니다.
+          </p>
+
+          <a
+            href={`tel:${siteIdentity.phonePrimary}`}
+            className="inline-flex items-center gap-3 group"
+            aria-label={`전화 걸기 ${siteIdentity.phonePrimary}`}
+          >
+            <span
+              className="w-12 h-12 rounded-full bg-care-500 flex items-center justify-center text-paper-warm transition-transform group-hover:scale-110"
+              aria-hidden="true"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.45 5.45l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </span>
+            <strong
+              className="font-serif text-sacred-900 kr-tight tabular-nums"
+              style={{ fontSize: "clamp(26px, 3.5vw, 48px)", letterSpacing: "-0.02em" }}
+            >
+              {siteIdentity.phonePrimary}
+            </strong>
+          </a>
+
+          <p className="mt-4 text-[14px] text-ink-400 kr">
+            상담 전용 직통 번호 · 평일 09:00 – 18:00
+          </p>
+        </div>
+      </section>
+
     </div>
   );
 }

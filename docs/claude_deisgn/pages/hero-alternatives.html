@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero Alternatives · 5 variations</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/shell.css">
+<style>
+  body { background: var(--paper-warm); padding: 40px 0 80px; }
+  .page-head { max-width: 1280px; margin: 0 auto 28px; padding: 0 32px; }
+  .page-head h1 { font-family: var(--font-serif); font-size: 34px; font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; margin: 0 0 6px; }
+  .page-head p  { font-size: 15px; color: var(--ink-700); max-width: 62ch; line-height: 1.75; margin: 0; word-break: keep-all; }
+
+  .hero-box {
+    max-width: 1280px; margin: 0 auto 24px; padding: 0 32px;
+  }
+  .label-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; padding: 0 4px; }
+  .label-no { font-family: var(--font-serif); font-weight: 700; font-size: 13px; color: var(--primary-700); letter-spacing: 0.2em; }
+  .label-title { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; }
+  .label-sub { font-size: 13px; color: var(--ink-600); margin-left: auto; }
+
+  .hero {
+    position: relative; overflow: hidden;
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--line);
+    height: 620px;
+  }
+
+  /* ==== H1. Magazine split ==== */
+  .h1 { background: var(--paper); display: grid; grid-template-columns: 1.05fr 1fr; }
+  .h1 .txt { padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; }
+  .h1 .tag { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; color: var(--primary-700); letter-spacing: 0.1em; text-transform: uppercase; }
+  .h1 .tag .line { width: 32px; height: 1px; background: var(--primary-500); }
+  .h1 h2 { font-family: var(--font-serif); font-size: clamp(44px, 5vw, 68px); font-weight: 700; color: var(--sacred-900); letter-spacing: -0.03em; line-height: 1.1; margin: 24px 0 16px; word-break: keep-all; }
+  .h1 h2 em { font-style: italic; color: var(--primary-600); }
+  .h1 p  { font-size: 17px; color: var(--ink-700); line-height: 1.8; word-break: keep-all; margin: 0 0 28px; max-width: 40ch; }
+  .h1 .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .h1 .img { background: url('../assets/hero_education.png') center/cover; position: relative; }
+  .h1 .img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, transparent, rgba(26,22,18,0.15)); }
+  .h1 .cap { position: absolute; bottom: 24px; left: 24px; right: 24px; color: #fff; font-size: 12px; letter-spacing: 0.1em; background: rgba(26,22,18,0.55); padding: 12px 16px; border-radius: 8px; backdrop-filter: blur(6px); }
+
+  /* ==== H2. Quiet fullbleed with floating card ==== */
+  .h2x { background: url('../assets/hero_interior.png') center/cover; }
+  .h2x::before { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(26,22,18,0.78) 0%, rgba(26,22,18,0.5) 45%, transparent 80%); }
+  .h2x .inner { position: relative; z-index: 2; padding: 72px 56px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; max-width: 680px; }
+  .h2x .tag { display: inline-flex; align-items: center; gap: 10px; background: rgba(212,168,85,0.15); border: 1px solid rgba(212,168,85,0.35); color: var(--primary-300); padding: 8px 14px; border-radius: 999px; font-size: 12px; letter-spacing: 0.05em; font-weight: 600; }
+  .h2x h2 { font-family: var(--font-serif); font-size: clamp(44px, 5.5vw, 72px); font-weight: 700; color: #fff; letter-spacing: -0.03em; line-height: 1.1; margin: 20px 0 18px; word-break: keep-all; }
+  .h2x p  { font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.85); max-width: 42ch; word-break: keep-all; margin-bottom: 24px; }
+  .h2x .card {
+    position: absolute; right: 32px; bottom: 32px; z-index: 3;
+    background: rgba(255,253,247,0.96); backdrop-filter: blur(12px);
+    border-radius: var(--r-lg); padding: 20px 24px; max-width: 300px;
+    box-shadow: var(--shadow-lg); border: 1px solid var(--line);
+  }
+  .h2x .card .l { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary-700); font-weight: 700; }
+  .h2x .card .num { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; margin: 4px 0 6px; }
+  .h2x .card p { font-size: 13px; color: var(--ink-700); line-height: 1.6; margin: 0; }
+
+  /* ==== H3. Typographic monument ==== */
+  .h3x { background: var(--paper); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 32px; }
+  .h3x::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(212,168,85,0.12), transparent 50%);
+  }
+  .h3x .big {
+    font-family: var(--font-serif); font-size: clamp(72px, 12vw, 180px);
+    font-weight: 700; letter-spacing: -0.05em; line-height: 0.9;
+    color: var(--sacred-900); position: relative; z-index: 2;
+  }
+  .h3x .big .gold { color: var(--primary-500); font-style: italic; font-weight: 400; }
+  .h3x .big .big2 { display: block; font-size: 0.5em; color: var(--ink-600); font-weight: 500; letter-spacing: -0.02em; margin-top: 14px; }
+  .h3x .sub { position: absolute; bottom: 44px; left: 0; right: 0; font-size: 15px; color: var(--ink-700); line-height: 1.7; max-width: 56ch; margin: 0 auto; padding: 0 32px; z-index: 2; }
+  .h3x .pill { position: absolute; top: 48px; left: 50%; transform: translateX(-50%); background: var(--sacred-900); color: var(--primary-300); padding: 8px 18px; border-radius: 999px; font-size: 12px; letter-spacing: 0.2em; font-weight: 700; z-index: 2; text-transform: uppercase; }
+  .h3x .phone-cta { position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); z-index: 3; }
+
+  /* ==== H4. Triptych photo grid ==== */
+  .h4x { background: var(--sacred-900); display: grid; grid-template-columns: 1.3fr 1fr 1fr; }
+  .h4x .main { padding: 56px 48px; display: flex; flex-direction: column; justify-content: space-between; background: var(--sacred-900); color: #fff; position: relative; }
+  .h4x .main::after { content: ''; position: absolute; right: 0; top: 48px; bottom: 48px; width: 1px; background: rgba(212,168,85,0.3); }
+  .h4x .main .tag { color: var(--primary-300); font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; }
+  .h4x .main h2 { font-family: var(--font-serif); font-size: clamp(40px, 4.8vw, 60px); color: #fff; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 28px 0 16px; word-break: keep-all; }
+  .h4x .main p  { color: rgba(255,255,255,0.8); font-size: 16px; line-height: 1.75; margin: 0 0 24px; word-break: keep-all; max-width: 34ch; }
+  .h4x .col { position: relative; }
+  .h4x .col.a { background: url('../assets/hero_education.png') center/cover; }
+  .h4x .col.b { background: url('../assets/hero_foodbank.jpg') center/cover; }
+  .h4x .col .ov { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(26,22,18,0.85)); padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; }
+  .h4x .col .n { font-size: 10px; letter-spacing: 0.25em; color: var(--primary-300); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .h4x .col h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; margin: 0 0 4px; color: #fff; word-break: keep-all; }
+  .h4x .col p  { font-size: 12px; color: rgba(255,255,255,0.7); margin: 0; word-break: keep-all; }
+
+  /* ==== H5. Interactive accessible (large controls) ==== */
+  .h5x { background: linear-gradient(145deg, var(--care-700), var(--care-800)); color: #fff; padding: 56px 56px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+  .h5x::before { content: ''; position: absolute; top: -150px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,85,0.18), transparent 60%); }
+  .h5x > * { position: relative; z-index: 2; }
+  .h5x .tag { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); padding: 8px 14px; border-radius: 999px; font-size: 12px; letter-spacing: 0.05em; color: #fff; font-weight: 600; backdrop-filter: blur(6px); }
+  .h5x .tag .d { width: 6px; height: 6px; border-radius: 50%; background: var(--primary-300); }
+  .h5x h2 { font-family: var(--font-serif); font-size: clamp(44px, 5.2vw, 66px); color: #fff; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 20px 0 20px; word-break: keep-all; }
+  .h5x p  { font-size: 19px; line-height: 1.75; color: rgba(255,255,255,0.9); word-break: keep-all; margin: 0 0 32px; max-width: 40ch; }
+  .h5x .call-card {
+    background: rgba(255,255,255,0.95);
+    color: var(--sacred-900);
+    border-radius: var(--r-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
+  }
+  .h5x .call-card .l { font-size: 13px; letter-spacing: 0.1em; color: var(--primary-700); font-weight: 700; text-transform: uppercase; }
+  .h5x .call-card .num { font-family: var(--font-serif); font-size: 44px; font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; margin: 10px 0 4px; }
+  .h5x .call-card .hours { font-size: 14px; color: var(--ink-600); margin-bottom: 16px; }
+  .h5x .call-card .big-btn { display: block; width: 100%; padding: 20px; background: var(--care-600); color: #fff; border: 0; border-radius: var(--r-md); font-size: 18px; font-weight: 700; font-family: inherit; cursor: pointer; letter-spacing: -0.01em; }
+  .h5x .call-card .big-btn:hover { background: var(--care-700); }
+  .h5x .call-card .steps { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .h5x .call-card .step-line { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--ink-700); margin: 8px 0; line-height: 1.6; word-break: keep-all; }
+  .h5x .call-card .step-line .n { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--care-100); color: var(--care-700); display: grid; place-items: center; font-size: 11px; font-weight: 700; margin-top: 1px; }
+
+  .rec {
+    margin-top: 10px; padding: 10px 14px; font-size: 13px; color: var(--ink-700); line-height: 1.6; word-break: keep-all;
+    background: #fff; border-radius: var(--r-md); border: 1px solid var(--line);
+  }
+  .rec strong { color: var(--sacred-900); }
+</style>
+</head>
+<body class="kr">
+
+<div class="page-head">
+  <h1>히어로 파생안 · 5 variations</h1>
+  <p>편지 톤의 B안을 기준으로, 현재 "풀블리드 슬라이더 3장 + 골드 ◆" 구조를 대체할 수 있는 다섯 방향입니다. 마음에 드는 조합을 표시해 주시면 확정 시안으로 다듬어 드립니다.</p>
+</div>
+
+<!-- H1 -->
+<div class="hero-box">
+  <div class="label-row"><span class="label-no">H · 01</span><span class="label-title">Magazine Split</span><span class="label-sub">잡지 표지형 2단 · 가장 편집적</span></div>
+  <div class="hero h1">
+    <div class="txt">
+      <span class="tag"><span class="line"></span>사단법인 · 용인 동백 · Est.</span>
+      <h2>배우고 나누며,<br><em>일자리</em>까지.</h2>
+      <p>사단법인 경인교회 부설 우리함께 평생교육·나눔센터가 여러분의 든든한 다리가 되어 드립니다. 종교·연령·장애 무관, 100% 무료.</p>
+      <div class="ctas">
+        <a class="btn btn--primary">무료 교육 신청 →</a>
+        <a class="btn btn--outline">14평의 기적</a>
+      </div>
+    </div>
+    <div class="img"><div class="cap">Chapter 01 · Education — 디지털 수업 풍경</div></div>
+  </div>
+  <div class="rec"><strong>추천 · 데스크탑 메인</strong> · 방문자 신뢰도(좌측 카피)와 현장감(우측 사진)을 동시에 전달. legalShort 태그가 상단 tag에 자연스럽게 녹음.</div>
+</div>
+
+<!-- H2 -->
+<div class="hero-box">
+  <div class="label-row"><span class="label-no">H · 02</span><span class="label-title">Quiet Fullbleed</span><span class="label-sub">고요한 풀블리드 + 떠있는 데이터 카드</span></div>
+  <div class="hero h2x">
+    <div class="inner">
+      <span class="tag">●&nbsp;&nbsp;사단법인 대한예수교장로회 경인교회 부설</span>
+      <div>
+        <h2>14평에서 시작된,<br>작지만 큰 이야기.</h2>
+        <p>배움이 일자리로, 나눔이 동행으로. 용인 동백에서 함께하는 평생교육·나눔센터입니다.</p>
+        <a class="btn btn--primary">무료 교육 신청 →</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="l">This year</div>
+      <div class="num">30+ 가구</div>
+      <p>푸드뱅크를 통해 정기적으로 온기를 전하고 있습니다.</p>
+    </div>
+  </div>
+  <div class="rec"><strong>현재 사이트와 가장 유사</strong> · 슬라이더 대신 정적 1컷으로 완화. 우측 데이터 카드가 지자체·언론 방문자에게 실적을 빠르게 전달.</div>
+</div>
+
+<!-- H3 -->
+<div class="hero-box">
+  <div class="label-row"><span class="label-no">H · 03</span><span class="label-title">Typographic Monument</span><span class="label-sub">타이포 자체를 주인공으로 — 광고/포스터 톤</span></div>
+  <div class="hero h3x">
+    <span class="pill">사단법인 · Est. 용인</span>
+    <div class="big">
+      배움이<br>
+      <span class="gold">나눔</span>이 되는
+      <span class="big2">14평의 자리</span>
+    </div>
+    <div class="phone-cta">
+      <a class="btn btn--primary" style="height: 56px;">☎ 010-9867-3121</a>
+    </div>
+    <p class="sub">종교·연령·장애 무관 · 전 과정 100% 무료. 신청서도 서류도 필요 없이 전화 한 통이면 됩니다.</p>
+  </div>
+  <div class="rec"><strong>임팩트 최대 · 리스크 중간</strong> · 사진이 없어도 강렬. 모바일에서도 비율 깨짐 없음. 대신 현장성은 다른 섹션(통계·푸드뱅크)에서 보강 필요.</div>
+</div>
+
+<!-- H4 -->
+<div class="hero-box">
+  <div class="label-row"><span class="label-no">H · 04</span><span class="label-title">Triptych</span><span class="label-sub">3연작 사진 + 좌측 메시지 — 3대 사역 즉시 전달</span></div>
+  <div class="hero h4x">
+    <div class="main">
+      <div>
+        <span class="tag">&mdash; 우리함께 평생교육·나눔센터</span>
+        <h2>세 가지 방식으로,<br>함께합니다.</h2>
+        <p>디지털 교육으로 배움을. 푸드뱅크로 식탁을. 시민기자단으로 목소리를.</p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a class="btn btn--primary">무료 교육 신청 →</a>
+        <a class="btn btn--ghost">센터 소개</a>
+      </div>
+    </div>
+    <div class="col a"><div class="ov"><div><span class="n">01 · Education</span><h4>디지털 평생교육</h4><p>40~60대·어르신</p></div></div></div>
+    <div class="col b"><div class="ov"><div><span class="n">02 · Foodbank</span><h4>푸드뱅크</h4><p>30+ 가구 정기 배송</p></div></div></div>
+  </div>
+  <div class="rec"><strong>3대 사역 동시 전달</strong> · 한 화면에 교육/푸드뱅크/커뮤니티 모두 노출. 여러 청중(교육생·후원자·지자체)이 첫 화면에서 자기 자리를 찾음.</div>
+</div>
+
+<!-- H5 -->
+<div class="hero-box">
+  <div class="label-row"><span class="label-no">H · 05</span><span class="label-title">Accessible-First</span><span class="label-sub">어르신 최우선 · 큰 전화 CTA · 3단계 안내</span></div>
+  <div class="hero h5x">
+    <div>
+      <span class="tag"><span class="d"></span>종교·연령·장애 무관 · 100% 무료</span>
+      <h2>스마트폰이 처음이세요?<br>괜찮습니다.</h2>
+      <p>전화 한 통이면 충분합니다. 센터장이 직접 받습니다. 서류도 신청서도 필요 없습니다.</p>
+      <a class="btn" style="background: #fff; color: var(--care-700); min-height: 56px;">14평의 이야기 더 보기 →</a>
+    </div>
+    <div class="call-card">
+      <div class="l">지금 바로 전화 상담</div>
+      <div class="num">010-9867-3121</div>
+      <div class="hours">평일 09:00 – 18:00 · 센터장 직접 응답</div>
+      <button class="big-btn">☎ 지금 전화 걸기</button>
+      <div class="steps">
+        <div class="step-line"><span class="n">1</span>위 버튼을 눌러 전화를 거세요.</div>
+        <div class="step-line"><span class="n">2</span>원하시는 수업을 말씀해 주세요.</div>
+        <div class="step-line"><span class="n">3</span>다음 수업부터 바로 오실 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+  <div class="rec"><strong>어르신 방문자 전용</strong> · 접근성 최우선. 가장 단순·친절. 현재 FloatingCTA와 중복되므로 이 안을 쓰면 FloatingCTA는 제거.</div>
+</div>
+
+</body>
+</html>

@@ -1,82 +1,222 @@
 import Image from "next/image";
+import { siteIdentity } from "@/lib/navigation";
+
+/* ── 본문 문단 공통 (A/B 모두 동일) ──────────────────────── */
+function BodyParagraphs({ className = "" }: { className?: string }) {
+  return (
+    <div className={className}>
+      <p className="kr text-[17px] leading-[2] text-[color:var(--color-ink-700)] [word-break:keep-all] my-[18px]">
+        안녕하십니까, 경인교회와 우리함께 나눔센터의{" "}
+        <strong className="text-sacred-900 font-bold">
+          {siteIdentity.pastor} {siteIdentity.pastorRole}
+        </strong>
+        입니다.
+      </p>
+
+      <p className="kr text-[17px] leading-[2] text-[color:var(--color-ink-700)] [word-break:keep-all] my-[18px]">
+        저희는{" "}
+        <strong className="text-sacred-900 font-bold">
+          <span className="bg-[linear-gradient(180deg,transparent_60%,var(--color-primary-200)_60%)] px-[2px]">
+            14평 남짓한 아담한 공간
+          </span>
+        </strong>
+        에서 시작했지만, 그 안에서 피어나는 꿈은 결코 작지 않습니다.
+      </p>
+
+      <p className="kr text-[17px] leading-[2] text-[color:var(--color-ink-700)] [word-break:keep-all] my-[18px]">
+        기술은 차갑지만, 그 기술을 나누는 사람의 마음은 따뜻해야 한다는 믿음으로
+        어르신과 장애인 이웃의 디지털 자립을 돕고 있습니다.
+      </p>
+
+      <p className="kr text-[17px] leading-[2] text-[color:var(--color-ink-700)] [word-break:keep-all] my-[18px]">
+        배움의 즐거움이 곧 삶의 활력이 되고, 나아가 새로운 일자리로 이어지는
+        <strong className="text-sacred-900 font-bold"> 기적의 현장</strong>에 여러분을 초대합니다.
+      </p>
+    </div>
+  );
+}
 
 export default function PastorGreeting() {
   return (
-    <section className="py-24 bg-gradient-to-b from-warm-100 to-warm-200 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-primary-200/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-48 h-48 bg-primary-300/20 rounded-full blur-3xl" />
+    <section className="bg-paper py-24 px-8 relative">
+      {/* ══════════════════════════════════════════════
+          Variant A — 데스크탑 (md 이상)
+          2-column: 폴라로이드 사진 | 텍스트+서명
+      ══════════════════════════════════════════════ */}
+      <div className="hidden md:block">
+        <div
+          className="
+            grid gap-[72px] items-center
+            max-w-[1180px] mx-auto
+          "
+          style={{ gridTemplateColumns: "400px 1fr" }}
+        >
+          {/* 좌측 — 폴라로이드 사진 */}
+          <div
+            className="
+              relative bg-paper
+              p-[18px_18px_60px]
+              border border-[color:var(--color-line)]
+              shadow-lg
+            "
+            style={{ transform: "rotate(-1.5deg)" }}
+          >
+            {/* washi tape */}
+            <div
+              className="absolute top-[-8px] left-[30px] right-[30px] h-4 opacity-40"
+              style={{
+                background:
+                  "repeating-linear-gradient(90deg, var(--color-primary-200) 0 6px, transparent 6px 10px)",
+              }}
+              aria-hidden="true"
+            />
 
-      {/* Decorative Quote Mark */}
-      <div className="absolute top-32 left-1/4 text-[200px] font-serif text-primary-200/30 leading-none select-none hidden lg:block">
-        "
-      </div>
+            {/* 사진 */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <Image
+                src="/img/kim01.PNG"
+                alt={`${siteIdentity.pastor} ${siteIdentity.pastorRole}`}
+                fill
+                className="object-cover object-top"
+              />
+            </div>
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <div className="flex justify-center lg:justify-end animate-slide-left">
-            <div className="relative">
-              {/* Background Decoration */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary-200 to-primary-300 rounded-3xl rotate-3 opacity-50" />
-              <div className="absolute -inset-4 bg-gradient-to-tr from-primary-100 to-primary-200 rounded-3xl -rotate-3 opacity-50" />
-
-              {/* Image Container */}
-              <div className="relative w-72 h-96 md:w-80 md:h-[28rem] rounded-2xl overflow-hidden shadow-2xl shadow-primary-900/20">
-                <Image
-                  src="/img/kim01.PNG"
-                  alt="김재완 전도사"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 288px, 320px"
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-sacred-900/30 via-transparent to-transparent" />
+            {/* 캡션 */}
+            <div className="text-center pt-[18px] font-serif">
+              <div className="text-[18px] font-bold text-sacred-900">
+                {siteIdentity.pastor}
               </div>
-
-              {/* Name Badge */}
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl px-6 py-3 shadow-xl">
-                <p className="text-primary-600 text-xs mb-0.5">담임 전도사</p>
-                <p className="font-serif text-xl font-bold text-sacred-900">김재완</p>
+              <div className="text-[12px] text-primary-700 tracking-[0.1em] mt-1">
+                {siteIdentity.pastorRole}
               </div>
             </div>
           </div>
 
-          {/* Content */}
-          <div className="animate-slide-right">
-            <span className="text-primary-500 text-sm tracking-[0.3em] uppercase mb-4 block">
-              Pastor&apos;s Message
+          {/* 우측 — 텍스트 */}
+          <div>
+            {/* 거대 quote 마크 */}
+            <span
+              className="font-serif text-[56px] leading-[0.4] text-primary-400 mb-3 block"
+              aria-hidden="true"
+            >
+              &ldquo;
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-sacred-900 mb-8">
-              담임 전도사
-              <br />
-              <span className="text-gradient-gold bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 bg-clip-text text-transparent">
-                인사말
-              </span>
-            </h2>
 
-            <div className="space-y-5 text-gray-600 leading-relaxed">
-              <p className="text-lg">
-                안녕하세요, 경인교회 담임 <strong className="text-sacred-900">김재완</strong> 전도사입니다.
+            <BodyParagraphs />
+
+            {/* 서명 */}
+            <div className="mt-8 pt-6 border-t border-[color:var(--color-line)] flex items-end gap-4">
+              <div>
+                <div className="font-serif text-[28px] font-semibold italic text-sacred-900 tracking-[-0.02em]">
+                  {siteIdentity.pastor}
+                </div>
+                <div className="text-[13px] text-[color:var(--color-ink-600)] tracking-[0.05em] mt-1">
+                  {siteIdentity.pastorRole}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════
+          Variant B — 모바일 (md 미만)
+          편지지 카드 (항공우편 스트라이프/스탬프/원형 사진 서명)
+      ══════════════════════════════════════════════ */}
+      <div className="md:hidden">
+        <div
+          className="
+            max-w-[820px] mx-auto
+            bg-letter
+            border border-primary-200
+            p-[72px_80px_60px]
+            shadow-md
+            relative
+          "
+        >
+          {/* 항공 우편 봉투 스트라이프 — 상단 8px */}
+          <div
+            className="absolute top-[-1px] left-[-1px] right-[-1px] h-[8px]"
+            style={{
+              background:
+                "repeating-linear-gradient(45deg, var(--color-primary-400) 0, var(--color-primary-400) 10px, var(--color-sacred-900) 10px, var(--color-sacred-900) 20px)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* letter-head: FROM 스탬프 + 원형 스탬프 */}
+          <div className="flex justify-between items-start mb-8 pb-6 border-b border-dashed border-[color:var(--color-line-strong)]">
+            {/* FROM 텍스트 */}
+            <div className="font-serif text-[13px] tracking-[0.08em] text-primary-700 uppercase font-bold leading-relaxed">
+              <div className="text-[10px] tracking-[0.2em] mb-1">FROM</div>
+              <div>{siteIdentity.centerName}</div>
+            </div>
+
+            {/* 원형 스탬프 */}
+            <div
+              className="
+                w-[86px] h-[86px]
+                border-2 border-primary-600
+                rounded-full
+                grid place-items-center
+                bg-[rgba(212,168,85,0.08)]
+              "
+              style={{ transform: "rotate(-6deg)" }}
+              aria-hidden="true"
+            >
+              <div className="text-center font-serif text-primary-700">
+                <div className="text-[10px] tracking-[0.15em] font-bold">KYUNGIN</div>
+                <div className="text-[18px] font-bold mt-0.5">CENTER</div>
+                <div className="text-[9px] tracking-[0.1em] mt-0.5">EST. 2021</div>
+              </div>
+            </div>
+          </div>
+
+          {/* letter-greeting */}
+          <p className="kr font-serif text-[26px] font-semibold text-sacred-900 tracking-tight leading-[1.4] mb-6 [word-break:keep-all]">
+            존경하는 이웃 여러분께
+          </p>
+
+          <BodyParagraphs />
+
+          {/* 포인트 구분선 */}
+          <div
+            className="border-b border-dashed border-[color:var(--color-line-strong)] my-6"
+            aria-hidden="true"
+          />
+
+          {/* letter-sign: 서명 영역 */}
+          <div className="mt-10 pt-7 border-t border-[color:var(--color-line-strong)] flex justify-end items-end gap-6">
+            {/* 서명 텍스트 */}
+            <div className="text-right">
+              <p className="text-[13px] text-[color:var(--color-ink-600)] tracking-[0.05em]">
+                드림 · {siteIdentity.pastorRole}
               </p>
-              <p>
-                경인교회는 하나님의 말씀을 중심으로 성도들이 서로 사랑하고
-                섬기며 함께 성장해 나가는 따뜻한 공동체입니다.
-              </p>
-              <p>
-                우리 교회는 작지만 큰 사랑으로 서로를 품고,
-                지역사회와 함께 나누며 살아가는 교회가 되기를 소망합니다.
-              </p>
-              <p>
-                언제든지 경인교회에 방문해 주시면 진심으로 환영하겠습니다.
-                함께 예배하고 교제하며 하나님의 은혜를 경험하시기를 바랍니다.
+              <p className="font-serif text-[40px] font-semibold text-sacred-900 tracking-[-0.03em] italic leading-none mt-2">
+                {siteIdentity.pastor}
               </p>
             </div>
 
-            {/* Decorative Line */}
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-16 h-px bg-gradient-to-r from-primary-400 to-transparent" />
-              <span className="text-primary-400">✦</span>
+            {/* 원형 사진 */}
+            <div
+              className="
+                w-24 h-24
+                rounded-full
+                overflow-hidden
+                border-[3px] border-[color:var(--color-paper)]
+                shrink-0
+              "
+              style={{
+                boxShadow: "0 0 0 1px var(--color-primary-300), var(--shadow-md)",
+              }}
+            >
+              <Image
+                src="/img/kim01.PNG"
+                alt={`${siteIdentity.pastor} ${siteIdentity.pastorRole}`}
+                width={96}
+                height={96}
+                className="object-cover object-top w-full h-full"
+              />
             </div>
           </div>
         </div>

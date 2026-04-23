@@ -1,157 +1,315 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { siteIdentity } from "@/lib/navigation";
+import HeroDesktopSlider from "./HeroDesktopSlider";
 
-const heroImages = [
+/* ------------------------------------------------------------------ */
+/*  Variant B (Mobile) — 기존 masthead 데이터                           */
+/* ------------------------------------------------------------------ */
+
+const mastFootCols = [
   {
-    src: "/images/hero_exterior_1768878683608.png",
-    alt: "경인교회 전경",
-    title_1: "경인교회에 오신 것을",
-    title_2: "환영합니다",
-    subtitle: "하나님의 사랑과 은혜가 넘치는 따뜻한 교회,\n경인교회와 함께 신앙의 여정을 걸어가세요.",
+    num: "01 · 디지털 교육",
+    title: "종교·연령·장애 무관",
+    body: "40~60대, 어르신, 장애인 이웃. 진입 장벽 없이 누구나 함께하는 공간입니다.",
   },
   {
-    src: "/images/hero_interior_1768878700835.png",
-    alt: "경인교회 예배당",
-    title_1: "은혜와 감동이 있는",
-    title_2: "예배의 자리",
-    subtitle: "영과 진리로 드리는 예배를 통해\n하나님을 만나는 기쁨을 누리세요.",
+    num: "02 · 푸드뱅크",
+    title: "이웃과 온기를 나눕니다",
+    body: "지역 취약계층에게 정기적으로 식품을 전달합니다. 자원봉사·기탁 모두 환영합니다.",
   },
   {
-    src: "/images/hero_community_korean_1768879054545.png",
-    alt: "경인교회 성도들",
-    title_1: "서로 사랑하며 섬기는",
-    title_2: "믿음의 공동체",
-    subtitle: "주님 안에서 한 가족 된 우리가\n서로를 세워주며 함께 성장합니다.",
+    num: "03 · 공동체",
+    title: "종교를 넘어 모든 이웃과",
+    body: "시민기자단·공간 공유·봉사활동. 함께 만들어가는 14평의 기적.",
   },
 ];
 
+const stripImages = [
+  {
+    src: "/images/hero_education_ai.png",
+    alt: "40~60대 성인들이 교육실에서 AI를 배우는 모습",
+    label: "Photo 01 · Education",
+    caption: "디지털 수업 풍경",
+    wide: true,
+  },
+  {
+    src: "/images/hero_foodbank.jpg",
+    alt: "푸드뱅크 식품 박스를 든 자원봉사자",
+    label: "Photo 02 · Foodbank",
+    caption: "푸드뱅크 현장",
+    wide: false,
+  },
+  {
+    src: "/images/hero_interior_1768878700835.png",
+    alt: "센터 내부 14평의 공간",
+    label: "Photo 03 · Community",
+    caption: "시민기자단",
+    wide: false,
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Variant A (Desktop) — identity strip 데이터                        */
+/* ------------------------------------------------------------------ */
+
+const identityCells = [
+  {
+    num: "14평",
+    eyebrow: "작은 공간, 큰 기적",
+    desc: "용인 동백, 단 14평에서 시작된 교육과 나눔",
+  },
+  {
+    num: "100%",
+    eyebrow: "무료 · 종교·연령·장애 무관",
+    desc: "전 과정 완전 무료, 어떤 비용도 받지 않습니다",
+  },
+  {
+    num: "3",
+    eyebrow: "나눔 사역 · 교육·푸드뱅크·공동체",
+    desc: "디지털교육, 푸드뱅크, 공동체. 함께 만드는 기적.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Component                                                          */
+/* ------------------------------------------------------------------ */
+
 export default function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Slideshow */}
-      {heroImages.map((image, index) => (
-        <div
-          key={image.src}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+    <>
+      {/* ============================================================ */}
+      {/* MOBILE: Variant B Masthead (기존 구현 그대로)                  */}
+      {/* ============================================================ */}
+      <div className="md:hidden">
+        {/* MASTHEAD */}
+        <section
+          className="kr-tight"
+          style={{
+            maxWidth: "1180px",
+            margin: "0 auto",
+            padding: "56px 32px 40px",
+            borderBottom: "1px solid var(--color-line)",
+          }}
+          aria-label="센터 소개 마스트헤드"
         >
+          {/* eyebrow / mast-top */}
           <div
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-linear ${index === currentSlide ? "scale-105" : "scale-100"
-              }`}
             style={{
-              backgroundImage: `url("${image.src}")`,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              paddingBottom: "28px",
+              borderBottom: "1px solid var(--color-line)",
+              fontSize: "12px",
+              letterSpacing: "0.3em",
+              color: "var(--color-primary-700)",
+              textTransform: "uppercase",
+              fontWeight: 700,
+              flexWrap: "wrap",
+              gap: "8px",
             }}
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-sacred-900/60 via-sacred-800/40 to-sacred-900/70" />
-          {/* Subtle Pattern Overlay */}
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,85,0.1)_0%,transparent_50%)]" />
-        </div>
-      ))}
+          >
+            <span>VOL.XIV · 용인 동백 · 2026</span>
+            <span
+              className="font-serif"
+              style={{
+                fontSize: "14px",
+                letterSpacing: "0.1em",
+                fontStyle: "italic",
+                color: "var(--color-ink-600)",
+                textTransform: "none",
+              }}
+            >
+              {siteIdentity.legalShort}
+            </span>
+            <span>Since Day One · Free · For Everyone</span>
+          </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 border border-primary-400/20 rounded-full animate-float opacity-50 pointer-events-none" />
-      <div className="absolute bottom-32 right-16 w-24 h-24 border border-primary-400/20 rounded-full animate-float delay-300 opacity-50 pointer-events-none" />
+          {/* giant serif title */}
+          <h1
+            className="font-serif kr-tight"
+            style={{
+              fontSize: "clamp(64px, 10vw, 148px)",
+              fontWeight: 700,
+              letterSpacing: "-0.05em",
+              lineHeight: 0.92,
+              color: "var(--color-sacred-900)",
+              margin: "48px 0 14px",
+              wordBreak: "keep-all",
+            }}
+          >
+            배우고 나누며,
+            <br />
+            <em
+              style={{
+                fontStyle: "italic",
+                fontWeight: 400,
+                color: "var(--color-primary-600)",
+              }}
+            >
+              일자리
+            </em>
+            까지.
+          </h1>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-0 md:mt-[-8rem]">
-        {/* Denomination */}
-        <p className="animate-fade-in-up delay-100 text-primary-300 text-sm tracking-[0.3em] uppercase mb-4 md:mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-          대한예수교장로회
-        </p>
-
-        {/* Main Title */}
-        <div className="h-[180px] md:h-[240px] flex flex-col justify-center transform transition-all duration-500">
-          {heroImages.map((image, index) => (
-            index === currentSlide && (
-              <div key={index} className="animate-fade-in-up delay-200">
-                <h1 className="font-serif text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                  {image.title_1}
-                  <br />
-                  <span className="text-gradient-gold bg-gradient-to-r from-primary-300 via-primary-200 to-primary-300 bg-clip-text text-transparent">
-                    {image.title_2}
-                  </span>
-                </h1>
-
-                {/* Decorative Divider */}
-                <div className="flex items-center justify-center gap-4 mb-8">
-                  <span className="w-12 h-px bg-gradient-to-r from-transparent to-primary-400" />
-                  <span className="text-primary-400 text-xl">✦</span>
-                  <span className="w-12 h-px bg-gradient-to-l from-transparent to-primary-400" />
+          {/* mast-foot — 3-column */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "32px",
+              paddingTop: "36px",
+              borderTop: "1px solid var(--color-line)",
+              marginTop: "36px",
+            }}
+          >
+            {mastFootCols.map((col) => (
+              <div key={col.num}>
+                <div
+                  className="font-serif"
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--color-primary-700)",
+                    letterSpacing: "0.1em",
+                    fontWeight: 700,
+                    marginBottom: "6px",
+                  }}
+                >
+                  {col.num}
                 </div>
-
-                {/* Subtitle */}
-                <p className="text-lg md:text-xl text-gray-100 leading-relaxed max-w-2xl mx-auto whitespace-pre-line drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
-                  {image.subtitle}
+                <h4
+                  className="font-serif kr-tight"
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 700,
+                    color: "var(--color-sacred-900)",
+                    margin: "0 0 10px",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {col.title}
+                </h4>
+                <p
+                  className="kr"
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.75,
+                    color: "var(--color-ink-700)",
+                    margin: 0,
+                    wordBreak: "keep-all",
+                  }}
+                >
+                  {col.body}
                 </p>
               </div>
-            )
+            ))}
+          </div>
+        </section>
+
+        {/* 3-PHOTO STRIP */}
+        <div
+          style={{
+            maxWidth: "1180px",
+            margin: "0 auto",
+            padding: "0 32px 72px",
+            display: "grid",
+            gridTemplateColumns: "1.6fr 1fr 1fr",
+            gap: "4px",
+          }}
+          aria-label="센터 사진 모음"
+        >
+          {stripImages.map((img) => (
+            <div
+              key={img.src}
+              style={{
+                position: "relative",
+                aspectRatio: "4/3",
+                overflow: "hidden",
+              }}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes={
+                  img.wide
+                    ? "(max-width: 768px) 100vw, 55vw"
+                    : "(max-width: 768px) 100vw, 25vw"
+                }
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                priority={false}
+              />
+              {/* caption overlay */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: "18px 20px 14px",
+                  color: "#fff",
+                  background:
+                    "linear-gradient(180deg, transparent, rgba(26,22,18,0.85))",
+                  fontFamily: "var(--font-family-serif)",
+                  fontSize: "13px",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.25em",
+                    color: "var(--color-primary-300)",
+                    textTransform: "uppercase",
+                    marginBottom: "3px",
+                  }}
+                >
+                  {img.label}
+                </div>
+                {img.caption}
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* CTA Buttons */}
-        <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4 justify-center mt-16">
-          <Link
-            href="/worship"
-            className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,168,85,0.4)] hover:-translate-y-1"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              예배안내
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+        {/* CTA ROW */}
+        <div
+          style={{
+            maxWidth: "1180px",
+            margin: "-40px auto 0",
+            padding: "0 32px 80px",
+            display: "flex",
+            gap: "14px",
+            alignItems: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <Link href="/education" className="hero-cta-primary">
+            무료 교육 신청 →
           </Link>
-          <Link
-            href="/location"
-            className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full font-medium border border-white/30 transition-all duration-300 hover:bg-white/20 hover:border-primary-300/50 hover:-translate-y-1"
-          >
-            <span className="flex items-center justify-center gap-2">
-              오시는길
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </span>
+          <Link href="/about" className="hero-cta-secondary">
+            센터 비전 보기
           </Link>
+          <span
+            style={{
+              marginLeft: "auto",
+              fontSize: "13px",
+              color: "var(--color-ink-500)",
+              letterSpacing: "0.08em",
+            }}
+          >
+            SCROLL ↓ &nbsp;다음 장 읽기
+          </span>
         </div>
       </div>
 
-      {/* Slider Indicators */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-        {heroImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-primary-400 w-8" : "bg-white/30 hover:bg-white/50"
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+      {/* ============================================================ */}
+      {/* DESKTOP: Variant A Hero (슬라이더 Client Component)          */}
+      {/* ============================================================ */}
+      <div className="hidden md:block">
+        <HeroDesktopSlider />
       </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in delay-700 z-10">
-        <div className="flex flex-col items-center gap-2 text-white/60">
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce" />
-          </div>
-        </div>
-      </div>
-    </section>
+    </>
   );
 }

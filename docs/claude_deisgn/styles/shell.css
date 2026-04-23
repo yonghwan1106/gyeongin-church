@@ -1,0 +1,110 @@
+/* Shared shell for desktop variation pages (A, B, C)
+   Mocks a full-bleed church homepage inside the iframe viewport */
+
+html, body { height: auto; }
+body.page-body { background: var(--paper); min-height: 100vh; }
+
+/* ===== Header (shared across variants, tweaked per variant via .hdr--<x>) ===== */
+.hdr {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 253, 247, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.hdr-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; gap: 28px;
+  padding: 18px 32px;
+  min-height: 72px;
+}
+.hdr-logo { display: flex; align-items: center; gap: 12px; }
+.hdr-mark {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--sacred-900), var(--sacred-800));
+  color: var(--primary-300);
+  font-family: var(--font-serif); font-weight: 900; font-size: 18px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.hdr-name .t { font-family: var(--font-serif); font-weight: 700; font-size: 16px; color: var(--sacred-900); line-height: 1.2; letter-spacing: -0.02em; }
+.hdr-name .s { font-size: 11px; color: var(--primary-700); letter-spacing: 0.04em; margin-top: 2px; }
+
+.hdr-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.hdr-nav a {
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; color: var(--ink-700);
+  transition: all 0.2s var(--ease);
+}
+.hdr-nav a:hover { background: var(--primary-100); color: var(--sacred-900); }
+.hdr-nav a.on { color: var(--sacred-900); background: var(--primary-100); font-weight: 600; }
+
+.hdr-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; min-height: 44px; border-radius: 999px;
+  background: var(--care-500); color: #fff; font-weight: 600; font-size: 14px;
+}
+.hdr-cta:hover { background: var(--care-600); }
+
+/* ===== Footer ===== */
+.ftr { background: var(--sacred-900); color: rgba(243,235,216,0.7); padding: 56px 32px 28px; margin-top: 80px; }
+.ftr-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.ftr-brand .t { font-family: var(--font-serif); color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.ftr-brand .s { font-size: 12px; color: var(--primary-300); letter-spacing: 0.04em; }
+.ftr-brand p  { font-size: 13px; line-height: 1.7; margin: 16px 0 0; color: rgba(243,235,216,0.6); max-width: 32ch; }
+.ftr h5 { font-family: var(--font-serif); color: var(--primary-300); font-size: 13px; margin: 0 0 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.ftr ul { list-style: none; padding: 0; margin: 0; }
+.ftr li { margin: 6px 0; }
+.ftr a { font-size: 13px; color: rgba(243,235,216,0.7); }
+.ftr a:hover { color: #fff; }
+.ftr-bar { max-width: 1180px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(212,168,85,0.15); display: flex; justify-content: space-between; font-size: 11px; color: rgba(243,235,216,0.4); }
+
+/* ===== Shared section helpers ===== */
+.section { padding: 100px 32px; position: relative; }
+.section-inner { max-width: 1180px; margin: 0 auto; }
+.section--paper { background: var(--paper); }
+.section--warm  { background: var(--paper-warm); }
+.section--warm2 { background: var(--paper-deep); }
+.section--sacred{ background: var(--sacred-900); color: var(--paper-warm); }
+.section--care  { background: linear-gradient(145deg, var(--care-600), var(--care-700)); color: #fff; }
+
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--primary-600); }
+.eyebrow--on-dark { color: var(--primary-300); }
+
+.hairline { display: block; width: 64px; height: 1px; background: linear-gradient(90deg, var(--primary-400), transparent); margin: 18px 0 18px; }
+.hairline--center { margin: 18px auto 20px; }
+
+.h-dis { font-family: var(--font-serif); font-size: clamp(40px, 5vw, 64px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; color: var(--sacred-900); word-break: keep-all; }
+.h-2   { font-family: var(--font-serif); font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; color: var(--sacred-900); word-break: keep-all; }
+.h-3   { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--sacred-900); letter-spacing: -0.02em; word-break: keep-all; }
+
+.lede { font-size: 19px; line-height: 1.75; color: var(--ink-700); word-break: keep-all; max-width: 56ch; }
+.body { font-size: 17px; line-height: 1.85; color: var(--ink-700); word-break: keep-all; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; padding: 0 28px; border-radius: 999px; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; transition: all 0.25s var(--ease); }
+.btn--primary { background: var(--care-500); color: #fff; }
+.btn--primary:hover { background: var(--care-600); transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+.btn--ghost   { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); backdrop-filter: blur(8px); }
+.btn--ghost:hover { background: rgba(255,255,255,0.16); }
+.btn--dark    { background: var(--sacred-900); color: var(--primary-300); }
+.btn--dark:hover { background: var(--sacred-800); }
+.btn--outline { background: transparent; color: var(--sacred-900); border: 1.5px solid var(--sacred-900); }
+.btn--outline:hover { background: var(--sacred-900); color: #fff; }
+
+/* cards */
+.card-soft {
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(253,248,238,0.9));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Variant ribbon (mark which variant this is) */
+.variant-tag {
+  position: fixed; top: 12px; right: 14px; z-index: 60;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 6px 10px; border-radius: 4px;
+  background: var(--sacred-900); color: var(--primary-300);
+  font-weight: 700;
+}
