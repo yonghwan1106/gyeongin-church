@@ -35,6 +35,20 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: siteIdentity.url,
     siteName: siteIdentity.centerName,
+    images: [
+      {
+        url: "/images/hero_education_ai.png",
+        width: 1200,
+        height: 630,
+        alt: "우리함께 평생교육·나눔센터 — 배우고 나누며 일자리까지",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteIdentity.centerName} | ${siteIdentity.legalShort}`,
+    description: "배우고 나누며 일자리까지! 디지털 세상의 주인이 되어보세요.",
+    images: ["/images/hero_education_ai.png"],
   },
 };
 
