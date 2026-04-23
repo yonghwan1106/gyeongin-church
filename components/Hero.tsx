@@ -88,7 +88,7 @@ export default function Hero() {
           style={{
             maxWidth: "1180px",
             margin: "0 auto",
-            padding: "56px 32px 40px",
+            padding: "112px 32px 40px",
             borderBottom: "1px solid var(--color-line)",
           }}
           aria-label="센터 소개 마스트헤드"
@@ -110,7 +110,7 @@ export default function Hero() {
               gap: "8px",
             }}
           >
-            <span>VOL.XIV · 용인 동백 · 2026</span>
+            <span>우리함께 · 경기도 용인 · 2026</span>
             <span
               className="font-serif"
               style={{
@@ -153,58 +153,6 @@ export default function Hero() {
             까지.
           </h1>
 
-          {/* mast-foot — 3-column */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "32px",
-              paddingTop: "36px",
-              borderTop: "1px solid var(--color-line)",
-              marginTop: "36px",
-            }}
-          >
-            {mastFootCols.map((col) => (
-              <div key={col.num}>
-                <div
-                  className="font-serif"
-                  style={{
-                    fontSize: "13px",
-                    color: "var(--color-primary-700)",
-                    letterSpacing: "0.1em",
-                    fontWeight: 700,
-                    marginBottom: "6px",
-                  }}
-                >
-                  {col.num}
-                </div>
-                <h4
-                  className="font-serif kr-tight"
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: 700,
-                    color: "var(--color-sacred-900)",
-                    margin: "0 0 10px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {col.title}
-                </h4>
-                <p
-                  className="kr"
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: 1.75,
-                    color: "var(--color-ink-700)",
-                    margin: 0,
-                    wordBreak: "keep-all",
-                  }}
-                >
-                  {col.body}
-                </p>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* 3-PHOTO STRIP */}

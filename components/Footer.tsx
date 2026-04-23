@@ -177,7 +177,7 @@ export default function Footer() {
           </div>
           {/* 마스트헤드 푸터 서명 */}
           <p className="mt-4 text-center text-primary-500/30 text-[10px] tracking-[0.25em] uppercase select-none" aria-hidden="true">
-            VOL.XIV · EDITORIAL LETTER · 용인 동백
+            우리함께 · 경기도 용인 · 2026
           </p>
         </div>
       </div>

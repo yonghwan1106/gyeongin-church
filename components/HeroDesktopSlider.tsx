@@ -24,7 +24,7 @@ const slides = [
         </em>
       </>
     ),
-    lede: "&ldquo;디지털 세상의 주인이 되어보세요.&rdquo; 어르신·장애인도 100% 무료, 종교·연령 무관. 14평 공간에서 시작된 든든한 다리.",
+    lede: "“디지털 세상의 주인이 되어보세요.” 어르신·장애인도 100% 무료, 종교·연령 무관. 14평 공간에서 시작된 든든한 다리.",
     ctaPrimary: { label: "무료 교육 신청하기", href: "/education" },
     ctaSecondary: { label: "14평의 기적 보기", href: "/about" },
   },
