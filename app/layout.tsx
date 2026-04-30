@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteIdentity.centerName}`,
   },
   description:
-    "사단법인 대한예수교장로회 경인교회 부설 우리함께 평생교육·나눔센터. 어르신과 장애인을 위한 무료 디지털 교육과 푸드뱅크 나눔으로 14평의 기적을 만들어갑니다. 용인 동백역 1번 출구.",
+    "사단법인 예수교장로회 경인교회 부설 우리함께 평생교육·나눔센터. 어르신과 장애인을 위한 무료 디지털 교육과 푸드뱅크 나눔으로 14평의 기적을 만들어갑니다. 용인 동백역 1번 출구.",
   keywords: [
     "우리함께 평생교육 나눔센터",
     "경인교회",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "AI 자서전",
     "구글 스마트워크",
     "김재완 전도사",
-    "사단법인 대한예수교장로회",
+    "사단법인 예수교장로회",
   ],
   openGraph: {
     title: `${siteIdentity.centerName} | ${siteIdentity.legalShort}`,

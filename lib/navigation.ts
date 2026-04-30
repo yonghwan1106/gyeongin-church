@@ -50,8 +50,8 @@ export const footerQuickLinks = [
 ];
 
 export const siteIdentity = {
-  legalName: "사단법인 대한예수교장로회 경인교회",
-  legalShort: "사단법인 대한예수교장로회 경인교회 부설",
+  legalName: "사단법인 예수교장로회 경인교회",
+  legalShort: "사단법인 예수교장로회 경인교회 부설",
   centerName: "우리함께 평생교육·나눔센터",
   shortName: "우리함께 나눔센터",
   tagline: "작지만 큰 14평의 기적",
