@@ -61,7 +61,9 @@ export const siteIdentity = {
   addressDetail: "동백역 1번 출구 메디컬빌딩",
   phonePrimary: "010-9867-3121",
   phoneSecondary: "010-7708-7006",
-  email: "a365center@gmail.com",
+  email: "admin@a365.or.kr",
   accessibility: "휠체어 및 보행 보조기 이용 시에도 턱이 없어 출입이 매우 편리합니다.",
   url: "https://www.a365.or.kr",
+  domain: "a365.or.kr",
+  businessNumber: "622-82-75817",
 };

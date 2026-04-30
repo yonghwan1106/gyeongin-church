@@ -10,11 +10,19 @@ export default function MinistryHubCards() {
           className="sacred-card rounded-3xl p-8 hover-lift flex flex-col animate-fade-in-up"
           style={{ animationDelay: `${idx * 120}ms` }}
         >
-          <div
-            className="w-16 h-16 mb-5 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center text-3xl"
-            aria-hidden="true"
-          >
-            {m.icon}
+          <div className="flex items-start justify-between mb-5">
+            <div
+              className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center text-3xl"
+              aria-hidden="true"
+            >
+              {m.icon}
+            </div>
+            <span
+              className="text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-care-50 text-care-700 border border-care-200"
+              aria-label="100퍼센트 무료 사역"
+            >
+              100% 무료
+            </span>
           </div>
           <h3 className="font-serif text-2xl font-bold text-sacred-900 mb-2">
             {m.title}

@@ -105,12 +105,25 @@ export default function EducationPrograms() {
                     : {}),
                 }}
               >
-                <span
-                  className="block font-bold uppercase text-primary-700"
-                  style={{ fontSize: 11, letterSpacing: "0.2em", marginBottom: 14 }}
-                >
-                  {step.eyebrow}
-                </span>
+                <div className="flex items-center gap-1.5 flex-wrap" style={{ marginBottom: 14 }}>
+                  <span
+                    className="font-bold uppercase text-primary-700"
+                    style={{ fontSize: 11, letterSpacing: "0.2em" }}
+                  >
+                    {step.eyebrow}
+                  </span>
+                  <span
+                    className={`font-bold tracking-wider px-2 py-0.5 rounded-full border ${
+                      step.hl
+                        ? "bg-care-100 text-care-800 border-care-300"
+                        : "bg-care-50 text-care-700 border-care-200"
+                    }`}
+                    style={{ fontSize: 10 }}
+                    aria-label="100퍼센트 무료 과정"
+                  >
+                    100% 무료
+                  </span>
+                </div>
 
                 <h4
                   className={`font-serif font-bold kr-tight ${
@@ -170,14 +183,26 @@ export default function EducationPrograms() {
                   aria-hidden="true"
                 />
 
-                {/* Badge */}
-                <span
-                  className={`text-[11px] tracking-[0.18em] uppercase font-bold ${
-                    step.hl ? "text-primary-300" : "text-primary-700"
-                  }`}
-                >
-                  {step.eyebrow}
-                </span>
+                {/* Badge row */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span
+                    className={`text-[11px] tracking-[0.18em] uppercase font-bold ${
+                      step.hl ? "text-primary-300" : "text-primary-700"
+                    }`}
+                  >
+                    {step.eyebrow}
+                  </span>
+                  <span
+                    className={`text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-full ${
+                      step.hl
+                        ? "bg-white/15 text-white border border-white/20"
+                        : "bg-care-50 text-care-700 border border-care-200"
+                    }`}
+                    aria-label="100퍼센트 무료 과정"
+                  >
+                    100% 무료
+                  </span>
+                </div>
 
                 {/* Title */}
                 <h3
