@@ -103,7 +103,7 @@ function VariantA() {
               전화하기
             </a>
             <a
-              href="https://map.kakao.com/link/search/경기도 용인특례시 기흥구 동백죽전대로 341"
+              href="https://map.kakao.com/link/search/경기도 용인시 기흥구 동백죽전대로 341"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full border border-primary-700 text-primary-700 font-semibold text-[15px] transition-colors hover:bg-primary-50"
@@ -270,7 +270,7 @@ function VariantB() {
               전화하기
             </a>
             <a
-              href="https://map.kakao.com/link/search/경기도 용인특례시 기흥구 동백죽전대로 341"
+              href="https://map.kakao.com/link/search/경기도 용인시 기흥구 동백죽전대로 341"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 min-h-[48px] rounded-full border border-primary-700 text-primary-700 font-semibold text-[15px] transition-colors hover:bg-primary-50"

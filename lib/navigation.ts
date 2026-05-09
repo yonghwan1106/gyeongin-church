@@ -57,7 +57,7 @@ export const siteIdentity = {
   tagline: "작지만 큰 14평의 기적",
   pastor: "김재완",
   pastorRole: "센터장 · 담임 강도사",
-  address: "경기도 용인특례시 기흥구 동백죽전대로 341, 213호",
+  address: "경기도 용인시 기흥구 동백죽전대로 341, 213호",
   addressDetail: "동백역 1번 출구 메디컬빌딩",
   phonePrimary: "010-9867-3121",
   phoneSecondary: "010-7708-7006",

@@ -63,7 +63,7 @@ const orgJsonLd = {
   address: {
     "@type": "PostalAddress",
     streetAddress: siteIdentity.address,
-    addressLocality: "용인특례시",
+    addressLocality: "용인시",
     addressRegion: "경기도",
     addressCountry: "KR",
   },

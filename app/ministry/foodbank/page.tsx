@@ -98,7 +98,7 @@ export default function FoodbankDetailPage() {
               </p>
               <div className="mt-8 p-5 border-l-2 border-primary-400 bg-paper-warm rounded-r-lg">
                 <p className="text-[15px] text-ink-700 leading-[1.75] kr">
-                  <span className="font-semibold text-sacred-900">경기도 용인특례시 기흥구</span>{" "}
+                  <span className="font-semibold text-sacred-900">경기도 용인시 기흥구</span>{" "}
                   동백죽전대로 341, 213호 (동백역 1번 출구 메디컬빌딩)
                 </p>
               </div>
@@ -186,7 +186,7 @@ export default function FoodbankDetailPage() {
                 {[
                   { dt: "운영 시간", dd: "평일 09:00 – 18:00\n토요일 09:00 – 13:00" },
                   { dt: "휴무", dd: "일요일 및 법정 공휴일" },
-                  { dt: "장소", dd: `경기도 용인특례시 기흥구\n동백죽전대로 341, 213호` },
+                  { dt: "장소", dd: `경기도 용인시 기흥구\n동백죽전대로 341, 213호` },
                   { dt: "교통", dd: "동백역(에버라인) 1번 출구\n도보 약 5분, 메디컬빌딩 2층" },
                   { dt: "접근성", dd: "휠체어·보행 보조기 이용 가능\n턱 없는 무장애 환경" },
                   { dt: "전화", dd: siteIdentity.phonePrimary },
