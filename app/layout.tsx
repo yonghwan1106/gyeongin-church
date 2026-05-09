@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "동백역 교육센터",
     "AI 자서전",
     "구글 스마트워크",
-    "김재완 전도사",
+    "김재완 강도사",
     "사단법인 예수교장로회",
   ],
   openGraph: {

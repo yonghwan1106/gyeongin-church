@@ -61,13 +61,13 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group" aria-label={`${siteIdentity.centerName} 홈`}>
+          <Link href="/" className="flex items-center gap-2 group" aria-label={`${siteIdentity.legalName} 홈`}>
             <div className="flex flex-col">
               <span className="text-base sm:text-lg md:text-xl font-bold leading-tight text-sacred-900 transition-colors duration-300">
-                {siteIdentity.centerName}
+                {siteIdentity.legalName}
               </span>
               <span className="text-[10px] sm:text-xs leading-tight text-primary-700 transition-colors duration-300">
-                {siteIdentity.legalShort}
+                부설 {siteIdentity.centerName}
               </span>
             </div>
           </Link>

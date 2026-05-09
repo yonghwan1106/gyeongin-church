@@ -35,12 +35,12 @@ export default function Footer() {
           {/* 센터·교회 정보 (2-col) */}
           <div className="md:col-span-2">
             <div className="mb-6">
-              <p className="text-primary-500/70 text-xs tracking-widest uppercase mb-2">
-                {siteIdentity.legalShort}
-              </p>
-              <h3 className="text-xl font-semibold leading-tight text-white">
-                {siteIdentity.centerName}
+              <h3 className="text-xl font-semibold leading-tight text-white mb-2">
+                {siteIdentity.legalName}
               </h3>
+              <p className="text-primary-500/70 text-xs tracking-widest uppercase">
+                부설 {siteIdentity.centerName}
+              </p>
             </div>
             <p className="text-ink-400 leading-relaxed max-w-md text-sm kr">
               14평 작은 공간에서 시작된 큰 기적.

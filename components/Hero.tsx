@@ -114,14 +114,35 @@ export default function Hero() {
             <span
               className="font-serif"
               style={{
-                fontSize: "14px",
-                letterSpacing: "0.1em",
-                fontStyle: "italic",
-                color: "var(--color-ink-600)",
+                display: "inline-flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
                 textTransform: "none",
+                lineHeight: 1.3,
               }}
             >
-              {siteIdentity.legalShort}
+              <span
+                style={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  color: "var(--color-sacred-900)",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {siteIdentity.legalName}
+              </span>
+              <span
+                style={{
+                  fontSize: "10px",
+                  color: "var(--color-ink-600)",
+                  letterSpacing: "0.18em",
+                  marginTop: "2px",
+                  fontStyle: "italic",
+                }}
+              >
+                부설 {siteIdentity.centerName}
+              </span>
             </span>
             <span>Since Day One · Free · For Everyone</span>
           </div>
