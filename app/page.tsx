@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import PartnerLink from "@/components/PartnerLink";
 import MiracleStats from "@/components/MiracleStats";
 import EducationPrograms from "@/components/EducationPrograms";
 import OutreachOverview from "@/components/OutreachOverview";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PartnerLink />
       <MiracleStats />
       <EducationPrograms />
       <OutreachOverview />
